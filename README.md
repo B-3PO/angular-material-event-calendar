@@ -1,2 +1,2 @@
-# md-calendar
-Angular material calendar component
+# angular-material-event-calendar
+Angular material event calendar component
