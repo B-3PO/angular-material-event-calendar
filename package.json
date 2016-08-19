@@ -1,0 +1,50 @@
+{
+  "name": "angular-material-event-calendar",
+  "version": "0.0.0",
+  "author": "Ben Rubin",
+  "description": "Angular material event calander component",
+  "keywords": "material, material-design, design, angular, component, calendar, event, md",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/B-3PO/angular-material-event-calendar.git"
+  },
+  "main": "index.js",
+  "devDependencies": {
+    "bump": "^0.2.5",
+    "del": "^2.2.0",
+    "gulp": "^3.9.1",
+    "gulp-angular-templatecache": "^1.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-bump": "^1.0.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-cssnano": "^2.1.0",
+    "gulp-filter": "^4.0.0",
+    "gulp-flatten": "^0.3.0",
+    "gulp-if": "^2.0.1",
+    "gulp-inject": "^4.0.0",
+    "gulp-jasmine": "^2.4.0",
+    "gulp-jshint": "^2.0.0",
+    "gulp-main-bower-files": "^1.5.1",
+    "gulp-ng-annotate": "^2.0.0",
+    "gulp-ng-constant": "^1.1.0",
+    "gulp-preprocess": "^2.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.3.2",
+    "gulp-sequence": "^0.4.5",
+    "gulp-serve": "^1.2.0",
+    "gulp-strip-debug": "^1.1.0",
+    "gulp-uglify": "^1.5.3",
+    "gulp-util": "^3.0.7",
+    "gulp-wrap": "^0.11.0",
+    "jshint": "^2.8.0",
+    "karma": "^1.1.0",
+    "karma-jasmine": "^1.0.2",
+    "karma-phantomjs-launcher": "^1.0.1",
+    "karma-spec-reporter": "0.0.26"
+  },
+  "scripts": {
+    "local": "gulp",
+    "build": "gulp build"
+  }
+}

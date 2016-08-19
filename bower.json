@@ -1,0 +1,48 @@
+{
+  "name": "angular-material-event-calendar",
+  "version": "0.0.0",
+  "description": "Angular material event calander component",
+  "main": [
+    "dist/md-calendar.js",
+    "dist/md-calendar.css",
+    "dist/md-calendar.min.js",
+    "dist/md-calendar.min.css"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/B-3PO/angular-material-event-calendar.git"
+  },
+  "authors": [
+    "Ben Rubin"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "material",
+    "material-design",
+    "design",
+    "angular",
+    "component",
+    "calendar",
+    "event",
+    "md"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app",
+    "src",
+    "gulp"
+  ],
+  "dependencies": {
+    "angular": "^1.5.7",
+    "angular-animate": "^1.5.7",
+    "angular-messages": "^1.5.7",
+    "angular-aria": "^1.5.7",
+    "angular-material": "^1.1.0"
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.5.7",
+    "angular-route": "^1.5.7"
+  }
+}
