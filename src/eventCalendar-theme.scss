@@ -47,5 +47,17 @@ md-event-calendar._md {
       color: #EEE;
       background: '{{primary-default}}';
     }
+
+    &.md-end-continue, &.md-continue {
+      &:after {
+        border-right:13px solid '{{foreground-4}}';
+      }
+    }
+
+    &.md-wrap {
+      &:after {
+        border-left:13px solid '{{foreground-4}}';
+      }
+    }
   }
 }

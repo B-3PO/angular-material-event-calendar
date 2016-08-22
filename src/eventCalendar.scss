@@ -91,11 +91,17 @@
             &.md-single {
               margin: 4px;
               border-radius: 2px;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              overflow: hidden;
             }
 
             &.md-start {
               margin: 4px 0 4px 4px;
               border-radius: 2px 0 0 2px;
+              white-space: nowrap;
+              z-index: 1;
+              position: relative;
             }
 
             &.md-empty {
@@ -106,6 +112,56 @@
             &.md-end, &.md-end-continue {
               margin: 4px 4px 4px 0;
               border-radius: 0 2px 2px 0;
+            }
+
+            &.md-continue, &.md-end-continue {
+              margin-left: 13px;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              overflow: hidden;
+            }
+
+            &.md-end-continue, &.md-continue {
+              &:after {
+                content: '';
+                position:absolute;
+                height: 0;
+                width: 0;
+                left: 0;
+                margin-top: -4px;
+                border-top: 12px solid transparent;
+                border-bottom: 11.5px solid transparent;
+              }
+            }
+
+            &.md-wrap {
+              margin: 4px 13px 4px 0;
+              border-radius: 0;
+              white-space: nowrap;
+
+              &:after {
+                content: '';
+                position:absolute;
+                height: 0;
+                width: 0;
+                right: 0;
+                margin-top: -4px;
+                border-top: 12px solid transparent;
+                border-bottom: 11.5px solid transparent;
+              }
+            }
+
+            &.md-end-continue, &.md-continue {
+              &:after {
+                content: '';
+                position:absolute;
+                height: 0;
+                width: 0;
+                left: 0;
+                margin-top: -4px;
+                border-top: 12px solid transparent;
+                border-bottom: 11.5px solid transparent;
+              }
             }
 
             .md-event-calendar-cell-event-time {

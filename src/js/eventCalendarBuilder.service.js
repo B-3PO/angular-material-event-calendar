@@ -160,6 +160,8 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil) {
           }
         } else if (dayOfWeek === 0) {
           eventElement = buildEventItem('continue', item);
+        } else if (dayOfWeek === 6) {
+          eventElement = buildEventItem('wrap', item);
         } else {
           eventElement = buildEventItem('empty', item);
         }
@@ -187,10 +189,12 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil) {
     eventItem.setAttribute('md-event-id', hash);
 
     if (type === 'single' || type === 'start' || type === 'continue' || type === 'end-continue') {
-      var dateLabelTime = document.createElement('span');
-      dateLabelTime.classList.add('md-event-calendar-cell-event-time');
-      dateLabelTime.textContent = $$mdEventCalendarUtil.formatEventTime(event.start);
-      eventItem.appendChild(dateLabelTime);
+      if (type !== 'continue' && type !== 'end-continue') {
+        var dateLabelTime = document.createElement('span');
+        dateLabelTime.classList.add('md-event-calendar-cell-event-time');
+        dateLabelTime.textContent = $$mdEventCalendarUtil.formatEventTime(event.start);
+        eventItem.appendChild(dateLabelTime);
+      }
 
       var dateLabelText = document.createElement('span');
       dateLabelText.textContent = event.label;

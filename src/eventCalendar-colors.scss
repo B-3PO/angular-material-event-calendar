@@ -47,8 +47,20 @@ md-event-calendar:not(._md) {
     color: #333;
 
     &.md-selected {
-      color: #eee;
+      color: #EEE;
       background: #888;
+    }
+
+    &.md-end-continue, &.md-continue {
+      &:after {
+        border-right:13px solid #DDD;
+      }
+    }
+
+    &.md-wrap {
+      &:after {
+        border-left:13px solid #DDD;
+      }
     }
   }
 }

@@ -12,7 +12,7 @@ function HomeController($scope, $timeout) {
     {
       start: new Date(),
       end: new Date(new Date().getTime() + 48 * 60 * 60 * 1000),
-      label: 'Event Two'
+      label: 'Event Two Two Two'
     },
     {
       start: new Date(new Date().getTime() + 24 * 60 * 60 * 1000),
