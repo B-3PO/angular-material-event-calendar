@@ -18,7 +18,7 @@ function mdEventCalendarHeaderDirective() {
       '<md-button class="md-icon-button" ng-click="mdEventCalendar.previousMonth()">'+
         '<img class="md-arrow md-left-arrow" src="icons/ic_keyboard_arrow_right_black_24px.svg" />'+
       '</md-button>'+
-      '<div>{{mdEventCalendar.monthDisplay + " " + mdEventCalendar.yearDisplay}}</div>'+
+      '<div class="md-event-calendar-header-label">{{mdEventCalendar.monthDisplay + " " + mdEventCalendar.yearDisplay}}</div>'+
       '<md-button class="md-icon-button" ng-click="mdEventCalendar.nextMonth()">'+
         '<img class="md-arrow" src="icons/ic_keyboard_arrow_right_black_24px.svg" />'+
       '</md-button>'+

@@ -9,6 +9,11 @@
       justify-content: center;
       align-items: center;
 
+      .md-event-calendar-header-label {
+        min-width: 120px;
+        text-align: center;
+      }
+
       .md-arrow {
         &.md-left-arrow {
           transform: rotate(180deg);
