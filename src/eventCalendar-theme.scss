@@ -59,5 +59,20 @@ md-event-calendar._md {
         border-left:13px solid '{{foreground-4}}';
       }
     }
+
+
+    &.md-selected {
+      &.md-end-continue, &.md-continue {
+        &:after {
+          border-right:13px solid '{{primary-default}}';
+        }
+      }
+
+      &.md-wrap {
+        &:after {
+          border-left:13px solid '{{primary-default}}';
+        }
+      }
+    }
   }
 }

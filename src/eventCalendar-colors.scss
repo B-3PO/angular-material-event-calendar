@@ -62,5 +62,20 @@ md-event-calendar:not(._md) {
         border-left:13px solid #DDD;
       }
     }
+
+
+    &.md-selected {
+      &.md-end-continue, &.md-continue {
+        &:after {
+          border-right:13px solid #888;
+        }
+      }
+
+      &.md-wrap {
+        &:after {
+          border-left:13px solid #888;
+        }
+      }
+    }
   }
 }
