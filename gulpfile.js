@@ -5,7 +5,11 @@ var serve = require('gulp-serve');
 var gulpSequence = require('gulp-sequence');
 var del = require('del');
 var bump = require('gulp-bump');
-var templateCache = require('gulp-angular-templatecache');
+var ngConstant = require('gulp-ng-constant');
+var sass = require('gulp-sass');
+var through2 = require('through2');
+var rename = require('gulp-rename');
+var wrap = require('gulp-wrap');
 var KarmaServer = require('karma').Server;
 
 
@@ -34,13 +38,37 @@ gulp.task('buildLocal', gulpSequence(
     'jsAppBuild',
     'cssBuild',
     'copyPartials',
-    'copyIcons'
+    'copyIcons',
+    'themeToConstant'
   ],
   'indexBuild'
 ));
 
 gulp.task('build', gulpSequence('buildIconCache', ['jsReleaseBuild', 'cssReleaseBuild'], 'cleanIconCache'));
 
+
+
+gulp.task('themeToConstant', function () {
+  console.log(paths.dest+'js');
+  return gulp.src(paths.src+'eventCalendar-theme.scss')
+    .pipe(sass())
+    .pipe(through2.obj(function (file, enc, cb) {
+      var config = {
+        name: 'material.components.eventCalendar',
+        deps: false,
+        constants: {
+          EVENT_CALENDAR_THEME: file.contents.toString()
+        }
+      };
+      file.contents = new Buffer(JSON.stringify(config), 'utf-8');
+      this.push(file);
+      cb();
+    }))
+    .pipe(ngConstant())
+    .pipe(wrap('(function(){"use strict";<%= contents %>}());'))
+    .pipe(rename('_theme.js'))
+    .pipe(gulp.dest(paths.dest+'/js'))
+});
 
 
 gulp.task('clean', function () {

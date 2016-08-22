@@ -1,0 +1,115 @@
+.md-event-calendar {
+  md-event-calendar-header {
+    display: block;
+
+    .md-event-calendar-header {
+      flex-direction: row;
+      display: flex;
+      line-height: 64px;
+      justify-content: center;
+      align-items: center;
+
+      .md-arrow {
+        &.md-left-arrow {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+
+
+  md-event-calendar-month {
+
+    .md-event-calendar-month-row-header {
+      flex: 1;
+      display: flex;
+      flex-direction: row;
+      min-height: 36px;
+      align-items: flex-end;
+      font-size: 12px;
+      padding-bottom: 12px;
+
+      .md-event-calendar-month-cell-header {
+        flex: 1;
+        padding-left: 6px;
+      }
+    }
+
+
+
+    .md-event-calendar-month-row {
+      flex: 1;
+      display: flex;
+      flex-direction: row;
+      border-top: 1px solid;
+
+      &:last-child {
+        border-bottom: 1px solid;
+      }
+
+      .md-event-calendar-month-cell {
+        position: relative;
+        flex: 1;
+        box-sizing: border-box;
+        border-left: 1px solid;
+
+        &:last-child {
+          border-right: 1px solid;
+        }
+
+
+        .md-event-calendar-month-cell-spacer {
+          margin-top: 100%
+        }
+
+        .md-event-calendar-month-cell-content {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+
+          .md-event-calendar-cell-data-label {
+            font-size: 13px;
+            padding: 6px;
+          }
+
+          .md-event-calendar-cell-event-spacer {
+            margin: 4px 0 4px 0;
+          }
+
+          .md-event-calendar-cell-event {
+            font-size: 12px;
+            min-height: 15px;
+            padding: 4px;
+
+            &.md-single {
+              margin: 4px;
+              border-radius: 2px;
+            }
+
+            &.md-start {
+              margin: 4px 0 4px 4px;
+              border-radius: 2px 0 0 2px;
+            }
+
+            &.md-end, &.end-continue {
+              margin: 4px 4px 4px 0;
+              border-radius: 0 2px 2px 0;
+            }
+
+            .md-event-calendar-cell-event-time {
+              font-weight: 500;
+              padding-right: 6px;
+              pointer-events: none;
+            }
+
+            span {
+              pointer-events: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}

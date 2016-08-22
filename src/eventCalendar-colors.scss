@@ -1,0 +1,54 @@
+md-event-calendar:not(._md) {
+  md-event-calendar-header {
+    color: #FFF;
+    background: #AAA;
+  }
+
+
+  md-event-calendar-month {
+    .md-event-calendar-month-row-header {
+      background: #AAA;
+
+      .md-event-calendar-month-cell-header {
+        color: #EEE;
+
+        .md-arrow {
+          fill: #333;
+        }
+      }
+    }
+
+    .md-event-calendar-month-row {
+      background: #FFF;
+      border-color: #DDD;
+
+      &:last-child {
+        border-color: #DDD;
+      }
+
+      .md-event-calendar-month-cell {
+        border-color: #DDD;
+
+        &:last-child {
+          border-color: #DDD;
+        }
+
+        .md-event-calendar-month-cell-content {
+          .md-event-calendar-cell-data-label {
+            color: #666;
+          }
+        }
+      }
+    }
+  }
+
+  .md-event-calendar-cell-event {
+    background: #EEE;
+    color: #333;
+
+    &.md-selected {
+      color: #eee;
+      background: #888;
+    }
+  }
+}

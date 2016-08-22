@@ -4,9 +4,7 @@
   "description": "Angular material event calander component",
   "main": [
     "dist/md-calendar.js",
-    "dist/md-calendar.css",
-    "dist/md-calendar.min.js",
-    "dist/md-calendar.min.css"
+    "dist/md-calendar.css"
   ],
   "repository": {
     "type": "git",

@@ -6,6 +6,4 @@
  * Calendar Component
  */
 angular
-  .module('material.components.eventCalendar', [
-    'material.core'
-  ]);
+  .module('material.components.eventCalendar', []);
