@@ -49,7 +49,6 @@ gulp.task('build', gulpSequence('buildIconCache', ['jsReleaseBuild', 'cssRelease
 
 
 gulp.task('themeToConstant', function () {
-  console.log(paths.dest+'js');
   return gulp.src(paths.src+'eventCalendar-theme.scss')
     .pipe(sass())
     .pipe(through2.obj(function (file, enc, cb) {
@@ -144,6 +143,8 @@ gulp.task('watch', function () {
         if (event.type !== 'changed') { indexBuild.inject(); }
       });
   });
+
+  gulp.watch('src/eventCalendar-theme.scss', ['themeToConstant']);
 
 
   gulp.watch(paths.partials, function (event) {

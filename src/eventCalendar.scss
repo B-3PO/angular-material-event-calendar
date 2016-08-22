@@ -93,7 +93,12 @@
               border-radius: 2px 0 0 2px;
             }
 
-            &.md-end, &.end-continue {
+            &.md-empty {
+              margin: 4px 0 4px 0;
+              border-radius: 0;
+            }
+
+            &.md-end, &.md-end-continue {
               margin: 4px 4px 4px 0;
               border-radius: 0 2px 2px 0;
             }

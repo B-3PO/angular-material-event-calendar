@@ -16,6 +16,7 @@ md-event-calendar._md {
     }
 
     .md-event-calendar-month-row {
+      background: '{{background-hue-1}}';
       border-color: '{{foreground-4}}';
 
       &:last-child {

@@ -18,6 +18,16 @@ function HomeController($scope, $timeout) {
       start: new Date(new Date().getTime() + 24 * 60 * 60 * 1000),
       end: new Date(new Date().getTime() + 48 * 60 * 60 * 1000),
       label: 'Event Three'
+    },
+    {
+      start: new Date(new Date().getTime() + 72 * 60 * 60 * 1000),
+      end: new Date(new Date().getTime() + 72 * 60 * 60 * 1000),
+      label: 'Event Three'
+    },
+    {
+      start: new Date(new Date().getTime() + 72 * 60 * 60 * 1000),
+      end: new Date(new Date().getTime() + 144 * 60 * 60 * 1000),
+      label: 'Event Four'
     }
   ];
   $scope.selected = $scope.events[0];

@@ -50,11 +50,10 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil) {
     monthBody.appendChild(headerRow);
     monthBody.appendChild(row);
 
-
-    $$mdEventCalendarUtil.shortDays.forEach(function (name) {
+    $$mdEventCalendarUtil.days.forEach(function (name) {
       var dayHeader = document.createElement('div');
       dayHeader.classList.add('md-event-calendar-month-cell-header');
-      dayHeader.textContent = name;
+      dayHeader.textContent = name.slice(0,3).toLowerCase();
       headerRow.appendChild(dayHeader);
     });
 
