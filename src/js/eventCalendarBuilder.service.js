@@ -33,7 +33,12 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil) {
     var dateLabel = document.createElement('div');
     dateLabel.classList.add('md-event-calendar-show-more-date-label');
     dateLabel.textContent = $$mdEventCalendarUtil.dates[date.getDate()];
+    var closeButton = document.createElement('img');
+    closeButton.classList.add('md-event-calendar-show-more-close');
+    closeButton.setAttribute('src', 'icons/ic_close_black_24px.svg');
+    closeButton.setAttribute('md-show-more-close', 'true');
     container.appendChild(dateLabel);
+    container.appendChild(closeButton);
     container.appendChild(content);
     showMoreBody.appendChild(container);
 
@@ -66,6 +71,8 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil) {
 
     return showMoreBody;
   }
+
+
 
   function month(opts) {
     var date = $$mdEventCalendarUtil.isValidDate(opts.date) ? opts.date : new Date();
@@ -208,7 +215,7 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil) {
         // if it doesn't fit add a link to see the rest
         if (item.$$hide === true || ((eventPlace + 1) >= maxEvents && pos !== (validEvents.length-1))) {
           item.$$hide = true; // set hide so the event does not show on next day
-          cell.appendChild(buildShowMore(validEvents.length - pos, date));
+          cell.appendChild(buildShowMoreLink(validEvents.length - pos, date));
           return false;
         }
 
@@ -256,9 +263,9 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil) {
 
 
 
-    function buildShowMore(num, date) {
+    function buildShowMoreLink(num, date) {
       var showMoreElement = document.createElement('div');
-      showMoreElement.classList.add('md-event-calendar-cell-event-show-more');
+      showMoreElement.classList.add('md-event-calendar-cell-event-show-more-link');
       showMoreElement.textContent = num+' more';
       showMoreElement.setAttribute('md-show-more', date.toISOString());
       return showMoreElement;

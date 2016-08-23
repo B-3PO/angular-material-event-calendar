@@ -83,7 +83,6 @@ md-event-calendar {
           bottom: 0;
           left: 0;
           right: 0;
-          overflow: hidden;
 
           .md-event-calendar-cell-data-label {
             font-size: 13px;
@@ -92,6 +91,13 @@ md-event-calendar {
 
           .md-event-calendar-cell-event-spacer {
             margin: 4px 0 4px 0;
+          }
+
+          .md-event-calendar-cell-event-show-more-link {
+            font-size: 13px;
+            padding: 4px;
+            padding-left: 8px;
+            cursor: pointer;
           }
         }
       }
@@ -194,7 +200,7 @@ md-event-calendar {
     position: absolute;
     top: 0;
     left: 1px;
-    width: 220px;
+    width: 180px;
     background: #FFF;
     padding: 12px;
     padding-top: 7px;
@@ -206,6 +212,15 @@ md-event-calendar {
 
     .md-event-calendar-show-more-content {
       position: relative;
+    }
+
+    .md-event-calendar-show-more-close {
+      position: absolute;
+      top: 6px;
+      right: 7px;
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
     }
 
     .md-event-calendar-show-more-date-label {

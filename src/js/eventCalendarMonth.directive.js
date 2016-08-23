@@ -47,6 +47,8 @@ function eventCalendarMonthDirective($$mdEventCalendarBuilder, $window, $$rAF) {
     element.on('click', function (e) {
       var eventId = e.target.getAttribute('md-event-id');
       var showMore = e.target.getAttribute('md-show-more');
+      var showMoreClose = e.target.getAttribute('md-show-more-close');
+
       if (eventId) {
         var eventItem = getIdFromHash(eventId);
         scope.$apply(function () {
@@ -56,6 +58,10 @@ function eventCalendarMonthDirective($$mdEventCalendarBuilder, $window, $$rAF) {
 
       if (showMore) {
         buildShowMore(e.target, new Date(showMore));
+      }
+
+      if (showMoreClose) {
+        angular.element(e.target.parentNode).remove();
       }
     });
 
