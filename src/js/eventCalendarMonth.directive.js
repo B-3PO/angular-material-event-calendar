@@ -46,11 +46,16 @@ function eventCalendarMonthDirective($$mdEventCalendarBuilder, $window, $$rAF) {
 
     element.on('click', function (e) {
       var eventId = e.target.getAttribute('md-event-id');
+      var showMore = e.target.getAttribute('md-show-more');
       if (eventId) {
         var eventItem = getIdFromHash(eventId);
         scope.$apply(function () {
           mdEventCalendarCtrl.selectEvent(e, getIdFromHash(eventId));
         });
+      }
+
+      if (showMore) {
+        buildShowMore(e.target, new Date(showMore));
       }
     });
 
@@ -67,6 +72,18 @@ function eventCalendarMonthDirective($$mdEventCalendarBuilder, $window, $$rAF) {
       });
       element.empty();
       element.append(monthElement);
+    }
+
+    function buildShowMore(el, date) {
+      var showMoreElement = $$mdEventCalendarBuilder.showMore({
+        date: date,
+        selected: mdEventCalendarCtrl.selectedEvents,
+        events: mdEventCalendarCtrl.events,
+        labelProperty: mdEventCalendarCtrl.labelProperty,
+      });
+      // console.log(el.parentNode);
+      angular.element(el).parent().parent().append(showMoreElement)
+      // element.append(showMoreElement);
     }
 
     function getIdFromHash(id) {

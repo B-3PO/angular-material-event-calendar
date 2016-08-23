@@ -51,13 +51,13 @@ md-event-calendar:not(._md) {
       background: #888;
     }
 
-    &.md-end-continue, &.md-continue {
+    &.md-continue-left, &.md-end-left {
       &:after {
         border-right:13px solid #EEE;
       }
     }
 
-    &.md-wrap {
+    &.md-continue-right, &.md-start-right {
       &:after {
         border-left:13px solid #EEE;
       }
@@ -65,17 +65,23 @@ md-event-calendar:not(._md) {
 
 
     &.md-selected {
-      &.md-end-continue, &.md-continue {
+      &.md-continue-left, &.md-end-left {
         &:after {
           border-right:13px solid #888;
         }
       }
 
-      &.md-wrap {
+      &.md-continue-right, &.md-start-right {
         &:after {
           border-left:13px solid #888;
         }
       }
+    }
+  }
+
+  .md-event-calendar-show-more-container {
+    .md-event-calendar-show-more-date-label {
+      color: #666;
     }
   }
 }

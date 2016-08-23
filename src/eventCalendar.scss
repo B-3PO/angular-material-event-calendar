@@ -93,107 +93,125 @@ md-event-calendar {
           .md-event-calendar-cell-event-spacer {
             margin: 4px 0 4px 0;
           }
-
-          .md-event-calendar-cell-event-show-more {
-            font-size: 14px;
-            padding: 4px;
-            padding-left: 8px;
-            cursor: pointer;
-          }
-
-          .md-event-calendar-cell-event {
-            font-size: 12px;
-            min-height: 15px;
-            padding: 4px;
-
-            &.md-single {
-              margin: 4px;
-              border-radius: 2px;
-              text-overflow: ellipsis;
-              white-space: nowrap;
-              overflow: hidden;
-            }
-
-            &.md-start {
-              margin: 4px 0 4px 4px;
-              border-radius: 2px 0 0 2px;
-              white-space: nowrap;
-              z-index: 1;
-              position: relative;
-            }
-
-            &.md-empty {
-              margin: 4px 0 4px 0;
-              border-radius: 0;
-            }
-
-            &.md-end, &.md-end-continue {
-              margin: 4px 4px 4px 0;
-              border-radius: 0 2px 2px 0;
-            }
-
-            &.md-continue, &.md-end-continue {
-              margin-left: 13px;
-              text-overflow: ellipsis;
-              white-space: nowrap;
-              overflow: hidden;
-            }
-
-            &.md-end-continue, &.md-continue {
-              &:after {
-                content: '';
-                position:absolute;
-                height: 0;
-                width: 0;
-                left: 0;
-                margin-top: -4px;
-                border-top: 12px solid transparent;
-                border-bottom: 11.5px solid transparent;
-              }
-            }
-
-            &.md-wrap {
-              margin: 4px 13px 4px 0;
-              border-radius: 0;
-              white-space: nowrap;
-
-              &:after {
-                content: '';
-                position:absolute;
-                height: 0;
-                width: 0;
-                right: 0;
-                margin-top: -4px;
-                border-top: 12px solid transparent;
-                border-bottom: 11.5px solid transparent;
-              }
-            }
-
-            &.md-end-continue, &.md-continue {
-              &:after {
-                content: '';
-                position:absolute;
-                height: 0;
-                width: 0;
-                left: 0;
-                margin-top: -4px;
-                border-top: 12px solid transparent;
-                border-bottom: 11.5px solid transparent;
-              }
-            }
-
-            .md-event-calendar-cell-event-time {
-              font-weight: 500;
-              padding-right: 6px;
-              pointer-events: none;
-            }
-
-            span {
-              pointer-events: none;
-            }
-          }
         }
       }
+    }
+  }
+
+
+  .md-event-calendar-cell-event {
+    font-size: 12px;
+    min-height: 15px;
+    padding: 4px;
+
+    &.md-single {
+      margin: 4px;
+      border-radius: 2px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    &.md-start {
+      margin: 4px 0 4px 4px;
+      border-radius: 2px 0 0 2px;
+      white-space: nowrap;
+      z-index: 1;
+      position: relative;
+    }
+
+    &.md-start-right {
+      margin: 4px 13px 4px 0;
+      border-radius: 2px 0 0 2px;
+    }
+
+    &.md-end {
+      margin: 4px 4px 4px 0;
+      border-radius: 0 2px 2px 0;
+    }
+
+    &.md-end-left {
+      margin: 4px 4px 4px 0;
+      border-radius: 0 2px 2px 0;
+    }
+
+    &.md-continue, &.md-continue-both {
+      margin: 4px 0 4px 0;
+      border-radius: 0;
+    }
+
+    &.md-continue-right {
+      margin: 4px 13px 4px 0;
+      border-radius: 0;
+      white-space: nowrap;
+    }
+
+    &.md-continue-left {
+      margin: 4px 0 4px 13px;
+      border-radius: 0;
+      white-space: nowrap;
+    }
+
+    &.md-continue-right, &.md-start-right {
+      &:after {
+        content: '';
+        position:absolute;
+        height: 0;
+        width: 0;
+        right: 0;
+        margin-top: -4px;
+        border-top: 12px solid transparent;
+        border-bottom: 11.5px solid transparent;
+      }
+    }
+
+    &.md-continue-left, &.md-end-left {
+      &:after {
+        content: '';
+        position:absolute;
+        height: 0;
+        width: 0;
+        left: 0;
+        margin-top: -4px;
+        border-top: 12px solid transparent;
+        border-bottom: 11.5px solid transparent;
+      }
+    }
+
+    .md-event-calendar-cell-event-time {
+      font-weight: 500;
+      padding-right: 6px;
+      pointer-events: none;
+    }
+
+    span {
+      pointer-events: none;
+    }
+  }
+
+
+
+  .md-event-calendar-show-more-container {
+    position: absolute;
+    top: 0;
+    width: 220px;
+    background: #FFF;
+    padding: 12px;
+    border-radius: 2px;
+    z-index: 9;
+    box-shadow: 0 7px 8px -4px rgba(0,0,0,.2),
+                0 13px 19px 2px rgba(0,0,0,.14),
+                0 5px 24px 4px rgba(0,0,0,.12);
+
+    .md-event-calendar-show-more-content {
+      position: relative;
+    }
+
+    .md-event-calendar-show-more-date-label {
+      font-size: 13px;
+      padding: 6px;
+      margin-left: -4px;
+      margin-top: -7px;
     }
   }
 }
