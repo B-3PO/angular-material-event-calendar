@@ -52,7 +52,7 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil) {
       } else if (isStartThisDay) {
         eventElement = buildEventItem('start-right', true, item, labelProperty);
       } else if (isEndThisDay) {
-        eventElement = buildEventItem('end-left', false, item, labelProperty);
+        eventElement = buildEventItem('end-left', true, item, labelProperty);
       } else {
         eventElement = buildEventItem('continue', true, item, labelProperty);
       }
