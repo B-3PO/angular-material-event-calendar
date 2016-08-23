@@ -72,9 +72,9 @@ function HomeController($scope, $timeout) {
   ];
   $scope.selected = $scope.events[0];
 
-  $scope.eventClicked = function (  item) {
+  $scope.eventClicked = function (item) {
     console.log(item);
-  }
+  };
 
 
   // $timeout(function () {

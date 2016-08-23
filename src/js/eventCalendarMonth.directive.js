@@ -87,9 +87,7 @@ function eventCalendarMonthDirective($$mdEventCalendarBuilder, $window, $$rAF) {
         events: mdEventCalendarCtrl.events,
         labelProperty: mdEventCalendarCtrl.labelProperty,
       });
-      // console.log(el.parentNode);
-      angular.element(el).parent().parent().append(showMoreElement)
-      // element.append(showMoreElement);
+      angular.element(el).parent().parent().append(showMoreElement);
     }
 
     function getIdFromHash(id) {

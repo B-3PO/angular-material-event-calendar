@@ -44,7 +44,7 @@ function eventCalendarDirective($injector, $parse) {
       mdEventCalendarCtrl.callEventClick = function (e, eventItem) {
         if (!attrs.mdEventClick) { return; }
         fn(scope.$parent, {$event: e, $selectedEvent: eventItem});
-      }
+      };
 
       if (ngModelCtrl) {
         ngModelCtrl.$render = render;

@@ -121,7 +121,7 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil) {
     // we know when to start a new row.
     var dayOfWeek = firstDayOfTheWeek;
     var iterationDate = firstDayOfMonth;
-    var d = 1
+    var d = 1;
     while (d <= numberOfDaysInMonth) {
       // If we've reached the end of the week, start a new row.
       if (dayOfWeek === 7) {
@@ -326,10 +326,10 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil) {
 
   function filterEventsOnMonth(date, events) {
     return !events || !events.length ? [] : events.filter(function (item) {
-      return $$mdEventCalendarUtil.isValidDate(item.start)
-              && $$mdEventCalendarUtil.isValidDate(item.end)
-              ? ($$mdEventCalendarUtil.isSameMonthAndYear(date, item.start) || $$mdEventCalendarUtil.isSameMonthAndYear(date, item.end))
-              : $$mdEventCalendarUtil.isSameMonthAndYear(date, item.start);
+      var isStartValid = $$mdEventCalendarUtil.isValidDate(item.start);
+      var isEndValid = $$mdEventCalendarUtil.isValidDate(item.end);
+      var isStartSame = $$mdEventCalendarUtil.isSameMonthAndYear(date, item.start);
+      return isStartValid && isEndValid ? (isStartSame || $$mdEventCalendarUtil.isSameMonthAndYear(date, item.end)) : isStartSame;
     }).sort(function(a, b) {
       a = new Date(a.start);
       b = new Date(b.start);
@@ -340,7 +340,7 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil) {
 
   function filterEventsOnDay(date, events) {
     return !events || !events.length ? [] : events.filter(function (item) {
-      return $$mdEventCalendarUtil.isDateWithinRange(date, item.start, item.end || item.start)
+      return $$mdEventCalendarUtil.isDateWithinRange(date, item.start, item.end || item.start);
     }).sort(function(a, b) {
       a = new Date(a.start);
       b = new Date(b.start);
