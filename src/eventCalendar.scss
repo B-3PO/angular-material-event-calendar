@@ -194,9 +194,11 @@ md-event-calendar {
   .md-event-calendar-show-more-container {
     position: absolute;
     top: 0;
+    left: 1px;
     width: 220px;
     background: #FFF;
     padding: 12px;
+    padding-top: 7px;
     border-radius: 2px;
     z-index: 9;
     box-shadow: 0 7px 8px -4px rgba(0,0,0,.2),
@@ -210,7 +212,7 @@ md-event-calendar {
     .md-event-calendar-show-more-date-label {
       font-size: 13px;
       padding: 6px;
-      margin-left: -4px;
+      margin-left: -13px;
       margin-top: -7px;
     }
   }
