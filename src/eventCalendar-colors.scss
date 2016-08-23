@@ -22,6 +22,10 @@ md-event-calendar:not(._md) {
       background: #FFF;
       border-color: #DDD;
 
+      .md-event-calendar-month-cell-divider {
+        border-color: #DDD;
+      }
+
       .md-event-calendar-month-cell {
         border-color: #DDD;
 
@@ -35,7 +39,7 @@ md-event-calendar:not(._md) {
           }
 
           .md-event-calendar-cell-event-show-more-link {
-            color: rgb(111, 180, 224);
+            color: #4189b8;
           }
         }
       }
