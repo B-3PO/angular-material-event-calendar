@@ -1,6 +1,6 @@
 {
   "name": "angular-material-event-calendar",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Angular material event calander component",
   "main": [
     "dist/md-calendar.js",
