@@ -10,6 +10,7 @@ var sass = require('gulp-sass');
 var through2 = require('through2');
 var rename = require('gulp-rename');
 var wrap = require('gulp-wrap');
+var templateCache = require('gulp-angular-templatecache');
 var KarmaServer = require('karma').Server;
 
 

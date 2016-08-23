@@ -27,11 +27,11 @@ exports.getDev = function (srcs) {
 exports.release = function () {
   return gulp.src(paths.css)
     .pipe(sass())
-    .pipe(concat('md-expansion-panel.css'))
+    .pipe(concat('angular-material-event-calendar.css'))
     .pipe(autoprefixer())
     .pipe(gulp.dest(paths.build))
     .pipe(cssnano())
-    .pipe(rename('md-expansion-panel.min.css'))
+    .pipe(rename('angular-material-event-calendar.min.css'))
     .pipe(gulp.dest(paths.build))
     .on('end', function(){
       gutil.log(gutil.colors.green('✔ CSS Build'), 'Finished');

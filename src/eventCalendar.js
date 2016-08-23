@@ -17,7 +17,7 @@ function addEventCalendarTheme($injector, $provide, EVENT_CALENDAR_THEME) {
     $mdThemingProvider = $injector.get('$mdThemingProvider');
     $mdThemingProvider.registerStyles(EVENT_CALENDAR_THEME);
   } else {
-    $provide.decorator('$$rAF', ["$delegate", rAFDecorator])
+    $provide.decorator('$$rAF', ["$delegate", rAFDecorator]);
   }
 }
 

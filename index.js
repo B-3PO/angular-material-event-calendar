@@ -1,1 +1,1 @@
-module.exports = require('./dist/md-calendar');
+module.exports = require('./dist/angular-material-event-calendar');

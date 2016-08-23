@@ -50,12 +50,12 @@ exports.release = function () {
     .pipe(wrap('(function(){"use strict";<%= contents %>}());'))
     .pipe(jshint())
     .pipe(jshint.reporter('default'))
-    .pipe(concat('md-expansion-panel.js'))
+    .pipe(concat('angular-material-event-calendar.js'))
     .pipe(stripDebug())
     .pipe(ngAnnotate())
     .pipe(gulp.dest(paths.build))
     .pipe(uglify())
-    .pipe(rename('md-expansion-panel.min.js'))
+    .pipe(rename('angular-material-event-calendar.min.js'))
     .pipe(gulp.dest(paths.build))
     .on('end', function() {
       gutil.log(gutil.colors.green('✔ JS build'), 'Finished');
