@@ -1,5 +1,10 @@
-<md-event-calendar ng-model="selected" md-events="events">
+<md-event-calendar
+  ng-model="selected"
+  md-events="events"
+  md-event-click="eventClicked($selectedEvent)"
+  md-label="title"
+>
 </md-event-calendar>
 <div>
-{{selected.label}}
+{{selected.title}}
 </div>

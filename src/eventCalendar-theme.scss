@@ -19,7 +19,7 @@ md-event-calendar._md {
       background: '{{background-hue-1}}';
       border-color: '{{foreground-4}}';
 
-      &:last-child {
+      .md-event-calendar-month-cell-divider {
         border-color: '{{foreground-4}}';
       }
 
@@ -33,6 +33,10 @@ md-event-calendar._md {
         .md-event-calendar-month-cell-content {
           .md-event-calendar-cell-data-label {
             color: '{{foreground-3}}';
+          }
+
+          .md-event-calendar-cell-event-show-more {
+            color: '{{primary-default}}';
           }
         }
       }

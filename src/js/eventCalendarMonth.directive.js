@@ -11,7 +11,7 @@ angular
  * @restrict E
  **/
  /*@ngInject*/
-function eventCalendarMonthDirective($$mdEventCalendarBuilder) {
+function eventCalendarMonthDirective($$mdEventCalendarBuilder, $window, $$rAF) {
   var directive = {
     restrict: 'E',
     require: '^mdEventCalendar',
@@ -22,6 +22,11 @@ function eventCalendarMonthDirective($$mdEventCalendarBuilder) {
 
   function link(scope, element, attrs, ctrl) {
     var mdEventCalendarCtrl = ctrl;
+    var rebuildThrottle = $$rAF.throttle(function () {
+      scope.$evalAsync(function () {
+        buildView();
+      });
+    });
 
     scope.$watch(function () { return mdEventCalendarCtrl.date; }, buildView);
     scope.$watch(function () { return mdEventCalendarCtrl.events; }, function (newValue, oldValue) {
@@ -33,19 +38,33 @@ function eventCalendarMonthDirective($$mdEventCalendarBuilder) {
       buildView();
     }, true);
 
+    angular.element($window).on('resize', rebuildThrottle);
+    scope.$on('$destroy', function () {
+      angular.element($window).off('resize', rebuildThrottle);
+    });
+
 
     element.on('click', function (e) {
       var eventId = e.target.getAttribute('md-event-id');
       if (eventId) {
+        var eventItem = getIdFromHash(eventId);
         scope.$apply(function () {
-          mdEventCalendarCtrl.selectEvent(getIdFromHash(eventId));
+          mdEventCalendarCtrl.selectEvent(e, getIdFromHash(eventId));
         });
       }
     });
 
 
     function buildView() {
-      var monthElement = $$mdEventCalendarBuilder.month(mdEventCalendarCtrl.date, mdEventCalendarCtrl.events, mdEventCalendarCtrl.selectedEvents);
+      var monthElement = $$mdEventCalendarBuilder.month({
+        date: mdEventCalendarCtrl.date,
+        events: mdEventCalendarCtrl.events,
+        selected: mdEventCalendarCtrl.selectedEvents,
+        labelProperty: mdEventCalendarCtrl.labelProperty,
+        bounds: {
+          width: mdEventCalendarCtrl.$element[0].offsetWidth
+        }
+      });
       element.empty();
       element.append(monthElement);
     }

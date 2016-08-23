@@ -22,10 +22,6 @@ md-event-calendar:not(._md) {
       background: #FFF;
       border-color: #DDD;
 
-      &:last-child {
-        border-color: #DDD;
-      }
-
       .md-event-calendar-month-cell {
         border-color: #DDD;
 
@@ -36,6 +32,10 @@ md-event-calendar:not(._md) {
         .md-event-calendar-month-cell-content {
           .md-event-calendar-cell-data-label {
             color: #666;
+          }
+
+          .md-event-calendar-cell-event-show-more {
+            color: rgb(111, 180, 224);
           }
         }
       }
@@ -53,13 +53,13 @@ md-event-calendar:not(._md) {
 
     &.md-end-continue, &.md-continue {
       &:after {
-        border-right:13px solid #DDD;
+        border-right:13px solid #EEE;
       }
     }
 
     &.md-wrap {
       &:after {
-        border-left:13px solid #DDD;
+        border-left:13px solid #EEE;
       }
     }
 

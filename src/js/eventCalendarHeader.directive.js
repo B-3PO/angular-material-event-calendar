@@ -15,11 +15,11 @@ function mdEventCalendarHeaderDirective() {
     restrict: 'E',
     require: '^mdEventCalendar',
     template: '<div class="md-event-calendar-header">'+
-      '<md-button class="md-icon-button" ng-click="mdEventCalendar.previousMonth()">'+
+      '<md-button class="md-icon-button" ng-click="mdEventCalendar.previousMonth()" aria-label="previous month">'+
         '<img class="md-arrow md-left-arrow" src="icons/ic_keyboard_arrow_right_black_24px.svg" />'+
       '</md-button>'+
       '<div class="md-event-calendar-header-label">{{mdEventCalendar.monthDisplay + " " + mdEventCalendar.yearDisplay}}</div>'+
-      '<md-button class="md-icon-button" ng-click="mdEventCalendar.nextMonth()">'+
+      '<md-button class="md-icon-button" ng-click="mdEventCalendar.nextMonth()" aria-label="mext month">'+
         '<img class="md-arrow" src="icons/ic_keyboard_arrow_right_black_24px.svg" />'+
       '</md-button>'+
     '</div>'
