@@ -40,7 +40,8 @@ gulp.task('buildLocal', gulpSequence(
     'cssBuild',
     'copyPartials',
     'copyIcons',
-    'themeToConstant'
+    'themeToConstant',
+    'buildIconCacheDev'
   ],
   'indexBuild'
 ));
@@ -109,6 +110,11 @@ gulp.task('copyIcons', function () {
     .pipe(gulp.dest(paths.dest));
 });
 
+gulp.task('buildIconCacheDev', function () {
+  return gulp.src(paths.icons)
+    .pipe(templateCache({module: 'material.components.eventCalendar'}))
+    .pipe(gulp.dest(paths.dest));
+});
 gulp.task('buildIconCache', function () {
   return gulp.src(paths.icons)
     .pipe(templateCache({module: 'material.components.eventCalendar'}))

@@ -41,6 +41,9 @@ md-event-calendar:not(._md) .md-event-calendar-cell-event {
 md-event-calendar:not(._md) .md-event-calendar-show-more-container .md-event-calendar-show-more-date-label {
   color: #666; }
 
+md-event-calendar:not(._md) .md-event-calendar-show-more-container .md-event-calendar-show-more-close svg {
+  fill: #666; }
+
 md-event-calendar {
   display: block; }
 
@@ -66,7 +69,9 @@ md-event-calendar {
       text-align: center;
       font-size: 20px; }
     .md-event-calendar md-event-calendar-header .md-event-calendar-header .md-arrow {
-      cursor: pointer; }
+      cursor: pointer;
+      height: 24px;
+      width: 24px; }
       .md-event-calendar md-event-calendar-header .md-event-calendar-header .md-arrow.md-left-arrow {
         -webkit-transform: rotate(180deg);
                 transform: rotate(180deg); }
@@ -217,6 +222,9 @@ md-event-calendar {
   .md-event-calendar .md-event-calendar-show-more-container .md-event-calendar-show-more-content {
     position: relative; }
   .md-event-calendar .md-event-calendar-show-more-container .md-event-calendar-show-more-close {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
     position: absolute;
     top: 6px;
     right: 7px;

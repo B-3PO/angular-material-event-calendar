@@ -1,35 +1,48 @@
 md-event-calendar {
   display: block;
-}
-.md-event-calendar {
+
   md-event-calendar-header {
-    display: block;
+    flex-direction: row;
+    display: flex;
+    line-height: 64px;
+    align-items: center;
 
-    .md-event-calendar-header {
-      flex-direction: row;
-      display: flex;
-      line-height: 64px;
+    &.md-center {
       justify-content: center;
-      align-items: center;
+    }
 
-      .md-event-calendar-header-label {
-        min-width: 150px;
-        text-align: center;
-        font-size: 20px;
-      }
+
+    md-event-calendar-title {
+      display: block;
+      min-width: 150px;
+      text-align: center;
+      font-size: 20px;
+    }
+
+    md-event-calendar-next, md-event-calendar-prev {
+      display: block;
 
       .md-arrow {
         cursor: pointer;
+        height: 24px;
+        width: 24px;
         &.md-left-arrow {
           transform: rotate(180deg);
         }
       }
     }
   }
+}
 
 
+
+
+
+
+
+
+md-event-calendar {
   md-event-calendar-month {
-
     .md-event-calendar-month-row-header {
       flex: 1;
       display: flex;
@@ -217,12 +230,17 @@ md-event-calendar {
     }
 
     .md-event-calendar-show-more-close {
+      display: flex;
       position: absolute;
       top: 6px;
       right: 7px;
       width: 16px;
       height: 16px;
       cursor: pointer;
+
+      svg {
+        pointer-events: none;
+      }
     }
 
     .md-event-calendar-show-more-date-label {

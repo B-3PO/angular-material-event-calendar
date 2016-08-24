@@ -2,20 +2,19 @@ md-event-calendar:not(._md) {
   md-event-calendar-header {
     color: #FFF;
     background: #AAA;
+
+    md-event-calendar-next, md-event-calendar-prev {
+      .md-arrow {
+        fill: #333;
+      }
+    }
   }
 
 
   md-event-calendar-month {
     .md-event-calendar-month-row-header {
+      color: #FFF;
       background: #AAA;
-
-      .md-event-calendar-month-cell-header {
-        color: #EEE;
-
-        .md-arrow {
-          fill: #333;
-        }
-      }
     }
 
     .md-event-calendar-month-row {
@@ -86,6 +85,10 @@ md-event-calendar:not(._md) {
   .md-event-calendar-show-more-container {
     .md-event-calendar-show-more-date-label {
       color: #666;
+    }
+
+    .md-event-calendar-show-more-close svg {
+      fill: #666;
     }
   }
 }

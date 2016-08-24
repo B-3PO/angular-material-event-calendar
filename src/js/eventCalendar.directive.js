@@ -18,10 +18,10 @@ function eventCalendarDirective($injector, $parse) {
     scope: {
       events: '=mdEvents',
     },
-    template: '<div class="md-event-calendar">'+
-      '<md-event-calendar-header></md-event-calendar-header>'+
-      '<md-event-calendar-month></md-event-calendar-month>'+
-    '</div>',
+    // template: '<div class="md-event-calendar">'+
+    //   '<md-event-calendar-header></md-event-calendar-header>'+
+    //   '<md-event-calendar-month></md-event-calendar-month>'+
+    // '</div>',
     compile: compile,
     controller: controller,
     controllerAs: 'mdEventCalendar',
@@ -32,6 +32,7 @@ function eventCalendarDirective($injector, $parse) {
 
   function compile(tElement, tAttr) {
     var fn = tAttr.mdEventClick ? $parse(tAttr.mdEventClick, null, true) : undefined;
+    tElement.append('<md-event-calendar-month></md-event-calendar-month>');
 
     return function postLink(scope, element, attrs, ctrls) {
       var mdEventCalendarCtrl = ctrls[0];

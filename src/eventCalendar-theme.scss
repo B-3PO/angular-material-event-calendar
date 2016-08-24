@@ -2,6 +2,12 @@ md-event-calendar._md {
   md-event-calendar-header {
     color: #EEE;
     background: '{{primary-default}}';
+
+    md-event-calendar-next, md-event-calendar-prev {
+      .md-arrow {
+        fill: #EEE;
+      }
+    }
   }
 
 
@@ -9,10 +15,6 @@ md-event-calendar._md {
     .md-event-calendar-month-row-header {
       color: #EEE;
       background: '{{primary-default}}';
-
-      .md-arrow {
-        fill: #EEE;
-      }
     }
 
     .md-event-calendar-month-row {
@@ -84,6 +86,9 @@ md-event-calendar._md {
   .md-event-calendar-show-more-container {
     .md-event-calendar-show-more-date-label {
       color: '{{foreground-3}}';
+    }
+    .md-event-calendar-show-more-close svg {
+      fill: '{{foreground-1}}';
     }
   }
 }

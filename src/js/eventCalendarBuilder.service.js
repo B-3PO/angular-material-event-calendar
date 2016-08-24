@@ -11,7 +11,7 @@ var nextId = 0;
  * @module material.components.eventCalendar
  **/
  /*@ngInject*/
-function mdEventCalendarBuilderService($$mdEventCalendarUtil) {
+function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
   var service = {
     month: month,
     showMore: showMore
@@ -33,9 +33,9 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil) {
     var dateLabel = document.createElement('div');
     dateLabel.classList.add('md-event-calendar-show-more-date-label');
     dateLabel.textContent = $$mdEventCalendarUtil.dates[date.getDate()];
-    var closeButton = document.createElement('img');
+    var closeButton = document.createElement('div');
     closeButton.classList.add('md-event-calendar-show-more-close');
-    closeButton.setAttribute('src', 'icons/ic_close_black_24px.svg');
+    closeButton.innerHTML = $templateCache.get('icons/ic_close_black_24px.svg');
     closeButton.setAttribute('md-show-more-close', 'true');
     container.appendChild(dateLabel);
     container.appendChild(closeButton);

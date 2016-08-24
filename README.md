@@ -112,6 +112,11 @@ gulp test
   md-event-click="eventClicked($selectedEvent)"
   md-label="title"
 >
+  <md-event-calendar-header class="md-center">
+    <md-event-calendar-prev></md-event-calendar-prev>
+    <md-event-calendar-title></md-event-calendar-title>
+    <md-event-calendar-next></md-event-calendar-next>
+  </md-event-calendar-header>
 </md-event-calendar>
 ```
 
@@ -127,31 +132,19 @@ angular.module('myApp', ['ngMaterial', 'material.components.expansionPanels']);
 ```
 
 
-#### Directive
-
-```
-<md-event-calendar
-  [ng-model=""]
-  [md-events=""]
-  [md-event-click=""]
-  [md-label=""]>
-...
-</md-event-calendar>
-```
-
-#### Attributes
-
-| Param | Type | Details |
-| :--: | :--: | :--: |
-| ng-model | model= | <p>Optional model to hold selected event object</p>  |
-| md-events | array | <p>Array of events</p>  |
-| md-event-click | function | <p>Function to be called on event click. You can pass in <code>$selectedEvent</code> to get the event object you clicked on</p>  |
-| md-label | string=title | <p>Property name for title display</p>  |
+* [Event Object](#eventobject)
+* [mdEventCalendar](#mdEventCalendar)
+* [mdEventCalendarHeader](#mdEventCalendarHeader)
+* [mdEventCalendarNext](#mdEventCalendarNext)
+* [mdEventCalendarPrev](#mdEventCalendarPrev)
+* [mdEventCalendarTitle](#mdEventCalendarTitle)
 
 
 
 
-#### Event Object
+### Event Object
+
+## <a name="eventobject"></a> Event Object
 
 ```javascript
 {
@@ -173,10 +166,78 @@ angular.module('myApp', ['ngMaterial', 'material.components.expansionPanels']);
 
 
 
+### Directives
+
+
+## <a name="mdEventCalendar"></a> mdEventCalendar
+
+```html
+<md-event-calendar
+  [ng-model=""]
+  [md-events=""]
+  [md-event-click=""]
+  [md-label=""]>
+...
+</md-event-calendar>
+```
+
+#### Attributes
+
+| Param | Type | Details |
+| :--: | :--: | :--: |
+| ng-model | model= | <p>Optional model to hold selected event object</p>  |
+| md-events | array | <p>Array of events</p>  |
+| md-event-click | function | <p>Function to be called on event click. You can pass in <code>$selectedEvent</code> to get the event object you clicked on</p>  |
+| md-label | string=title | <p>Property name for title display</p>  |
 
 
 
-## <a name="faq"></a> FAQ
+
+## <a name="mdEventCalendarHeader"></a> mdEventCalendarHeader
+
+The header is a container for the previous, next, and title directives. You can also add other elements to this.
+```html
+<md-event-calendar-header>
+...
+</md-event-calendar-header>
+```
+
+#### Classes
+
+| Param | Type | Details |
+| :--: | :--: | :--: |
+| md-center | css | <p>Center content inside of header</p>  |
+
+
+## <a name="mdEventCalendarNext"></a> mdEventCalendarNext
+
+This is the next arrow that will advance the current view by month/week/day. You can add this the header in any order
+```html
+<md-event-calendar-next>
+</md-event-calendar-next>
+```
+
+
+## <a name="mdEventCalendarPrev"></a> mdEventCalendarPrev
+
+This is the prev arrow that will change the current view by month/week/day. You can add this the header in any order
+```html
+<md-event-calendar-prev>
+</md-event-calendar-prev>
+```
+
+
+## <a name="mdEventCalendarTitle"></a> mdEventCalendarTitle
+
+This title will show the appropriate title for the calendar view
+```html
+<md-event-calendar-title>
+</md-event-calendar-title>
+```
+
+
+
+# <a name="faq"></a> FAQ
 
 #### Do i need to use ngMaterial?
 No, but you will not get the lovely theme colors.

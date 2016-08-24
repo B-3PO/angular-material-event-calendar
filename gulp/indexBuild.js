@@ -11,7 +11,7 @@ exports.inject = function () {
   var appCss = gulp.src(paths.appCss, {read: false});
   var bower = gulp.src(paths.bower).pipe(mainBowerFiles({includeDev: true}));
   var css = gulp.src(paths.injectCss, {read: false});
-  var themeConstant = gulp.src('public/js/_theme.js', {read: false});
+  var themeConstant = gulp.src(['public/js/_theme.js', 'public/templates.js'], {read: false});
 
   return gulp.src(paths.app + 'index.html')
     .pipe(inject(css, {
