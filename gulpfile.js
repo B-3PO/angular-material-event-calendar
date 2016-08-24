@@ -45,7 +45,7 @@ gulp.task('buildLocal', gulpSequence(
   'indexBuild'
 ));
 
-gulp.task('build', gulpSequence('buildIconCache', ['jsReleaseBuild', 'cssReleaseBuild'], 'cleanIconCache'));
+gulp.task('build', gulpSequence('buildIconCache', 'themeToConstantBuild', ['jsReleaseBuild', 'cssReleaseBuild'], 'cleanIconCache', 'cleanThemeConstant'));
 
 
 
@@ -69,6 +69,29 @@ gulp.task('themeToConstant', function () {
     .pipe(rename('_theme.js'))
     .pipe(gulp.dest(paths.dest+'/js'))
 });
+gulp.task('themeToConstantBuild', function () {
+  return gulp.src(paths.src+'eventCalendar-theme.scss')
+    .pipe(sass())
+    .pipe(through2.obj(function (file, enc, cb) {
+      var config = {
+        name: 'material.components.eventCalendar',
+        deps: false,
+        constants: {
+          EVENT_CALENDAR_THEME: file.contents.toString()
+        }
+      };
+      file.contents = new Buffer(JSON.stringify(config), 'utf-8');
+      this.push(file);
+      cb();
+    }))
+    .pipe(ngConstant())
+    .pipe(rename('_theme.js'))
+    .pipe(gulp.dest(paths.src+'/js'))
+});
+gulp.task('cleanThemeConstant', function () {
+  return del(paths.src+'/js/_theme.js');
+});
+
 
 
 gulp.task('clean', function () {
@@ -88,7 +111,7 @@ gulp.task('copyIcons', function () {
 
 gulp.task('buildIconCache', function () {
   return gulp.src(paths.icons)
-    .pipe(templateCache({module: 'material.components.calendar'}))
+    .pipe(templateCache({module: 'material.components.eventCalendar'}))
     .pipe(gulp.dest(paths.src));
 });
 
