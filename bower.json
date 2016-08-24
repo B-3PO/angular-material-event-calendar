@@ -1,10 +1,10 @@
 {
   "name": "angular-material-event-calendar",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Angular material event calander component",
   "main": [
-    "dist/md-calendar.js",
-    "dist/md-calendar.css"
+    "dist/angular-material-event-calendar.js",
+    "dist/angular-material-event-calendar.css"
   ],
   "repository": {
     "type": "git",
