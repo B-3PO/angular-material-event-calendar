@@ -93,7 +93,6 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
     var calendarStartDate;
     var today = $$mdEventCalendarUtil.createDateAtMidnight();
     var date = $$mdEventCalendarUtil.isValidDate(options.date) ? options.date : new Date();
-    var labelProperty = options.labelProperty;
     var firstDayOfMonth = $$mdEventCalendarUtil.getFirstDateOfMonth(date);
     var firstDayOfTheWeek = (firstDayOfMonth.getDay() + 7) % 7;
     var numberOfDaysInMonth = $$mdEventCalendarUtil.getNumberOfDaysInMonth(date);
@@ -125,7 +124,8 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
           isFirstDay: firstCalendarDay,
           isLastDay: false,
           maxEvents: maxEvents,
-          selected: selected
+          selected: selected,
+          labelProperty: options.labelProperty
         }));
         firstCalendarDay = false;
         d += 1;
@@ -163,7 +163,8 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
         isFirstDay: firstCalendarDay,
         isLastDay: lastCalendarDay,
         maxEvents: maxEvents,
-        selected: selected
+        selected: selected,
+        labelProperty: options.labelProperty
       }));
       firstCalendarDay = false;
       dayOfWeek += 1;
@@ -187,7 +188,8 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
         isFirstDay: false,
         isLastDay: lastCalendarDay,
         maxEvents: maxEvents,
-        selected: selected
+        selected: selected,
+        labelProperty: options.labelProperty
       }));
       dayOfWeek += 1;
       d += 1;
@@ -234,7 +236,7 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
     var place = 0;
     var hasEvents = false;
     var matchingEvents = getEventsInRange(options.date, options.events);
-    matchingEvents = setEventPlaces(matchingEvents);
+    matchingEvents = setEventPlaces(matchingEvents, options.dayOfWeek);
     matchingEvents.every(function (eventItem, pos) {
       var type = getEventDisplayType(eventItem, options);
       var placeDiff = eventItem.$$place - place;
@@ -288,10 +290,13 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
     eventElement.setAttribute('md-event-id', hash);
 
     if (type.hasLabel === true) {
-      var dateLabelTime = document.createElement('span');
-      dateLabelTime.classList.add('md-event-calendar-cell-event-time');
-      dateLabelTime.textContent = $$mdEventCalendarUtil.formatEventTime(eventItem.start);
-      eventElement.appendChild(dateLabelTime);
+      // do not show time for allDay events
+      if (type.allDay !== true) {
+        var dateLabelTime = document.createElement('span');
+        dateLabelTime.classList.add('md-event-calendar-cell-event-time');
+        dateLabelTime.textContent = $$mdEventCalendarUtil.formatEventTime(eventItem.start);
+        eventElement.appendChild(dateLabelTime);
+      }
 
       var dateLabelText = document.createElement('span');
       dateLabelText.textContent = eventItem[options.labelProperty];
@@ -364,7 +369,8 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
 
     return {
       className: className,
-      hasLabel: hasLabel
+      hasLabel: hasLabel,
+      allDay: item.allDay || false
     };
   }
 
@@ -374,24 +380,40 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
     });
   }
 
-  function setEventPlaces(events) {
+  function setEventPlaces(events, dayOfWeek) {
     var takenPlaces = [];
-    events.forEach(function(item) {
-      if (!item.$$place) {
-        item.$$place = getPlace();
-      } else {
-        takenPlaces.push(item.$$place);
-      }
+    var sorted = events.sort(function (a, b) {
+      if (a.end > b.end) { return -1; }
+      if (a.end < b.end) { return 1; }
+      return 0;
     });
 
-    return events.sort(function(a, b) {
+    // if not first day of week then get event palces. this is for dates that come from previous days
+    // otherwise reset places
+    sorted.forEach(function (item) {
+      if (dayOfWeek === 0) { item.$$place = undefined; }
+      else if (item.$$place !== undefined) { takenPlaces.push(item.$$place); }
+    });
+
+    // fill in places that have not been set
+    sorted.forEach(function(item) {
+      if (item.$$place === undefined) { item.$$place = getPlace(); }
+    });
+
+    // sort on places
+    return sorted.sort(function(a, b) {
       if (a.$$place > b.$$place) { return 1; }
       if (a.$$place < b.$$place) { return -1; }
       return 0;
     });
 
+
+    // find lowest place not taken
     function getPlace() {
-      var place = takenPlaces.length > 0 ? takenPlaces[takenPlaces.length-1] + 1 : 0;
+      var place = 0;
+      while (takenPlaces.indexOf(place) !== -1) {
+        place++;
+      }
       takenPlaces.push(place);
       return place;
     }
