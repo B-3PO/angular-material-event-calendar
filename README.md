@@ -13,6 +13,7 @@ Quick Links:
 * [Building](#building)
 * [Run Tests](#tests)
 * [Usage](#usage)
+* [Colors](#colors)
 * [Documentation](#documentation)
 * [FAQ](#faq)
 
@@ -110,7 +111,8 @@ gulp test
   ng-model="selected"
   md-events="events"
   md-event-click="eventClicked($selectedEvent)"
-  md-label="title"
+  md-label="title",
+  class="md-primary"
 >
   <md-event-calendar-header class="md-center">
     <md-event-calendar-prev></md-event-calendar-prev>
@@ -121,6 +123,25 @@ gulp test
 ```
 
 
+
+## <a name="colors"></a> Colors
+
+**With Angular Material**
+
+If you want to have the header and selected elements use the primary color for their backgrounds the just add the `md-primary` class
+```html
+<md-event-calendar
+  class="md-primary"
+>
+</md-event-calendar>
+```
+
+
+**Without Angular Material**
+
+If you want to change the header and selected event background colors you add this [scss](https://github.com/B-3PO/angular-material-event-calendar/blob/master/app/eventCalendar-primary.scss) file after the `angular-material-event-calendar.css` file
+
+Primary Color scss: [Click Here](https://github.com/B-3PO/angular-material-event-calendar/blob/master/app/eventCalendar-primary.scss)
 
 
 ## <a name="documentation"></a> Documentation
