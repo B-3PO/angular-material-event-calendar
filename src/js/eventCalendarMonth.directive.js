@@ -85,7 +85,7 @@ function eventCalendarMonthDirective($$mdEventCalendarBuilder, $window, $$rAF) {
         date: date,
         selected: mdEventCalendarCtrl.selectedEvents,
         events: mdEventCalendarCtrl.events,
-        labelProperty: mdEventCalendarCtrl.labelProperty,
+        labelProperty: mdEventCalendarCtrl.labelProperty
       });
       angular.element(el).parent().parent().append(showMoreElement);
     }

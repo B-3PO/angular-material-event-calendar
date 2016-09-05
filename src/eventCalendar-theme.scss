@@ -1,11 +1,12 @@
 md-event-calendar._md {
   md-event-calendar-header {
-    color: #EEE;
-    background: '{{primary-default}}';
+    color: '{{foreground-1}}';
+    background: '{{background-hue-1}}';
+    border-color: '{{foreground-4}}';
 
     md-event-calendar-next, md-event-calendar-prev {
-      .md-arrow {
-        fill: #EEE;
+      .md-arrow svg {
+        fill: '{{foreground-2}}';
       }
     }
   }
@@ -13,13 +14,15 @@ md-event-calendar._md {
 
   md-event-calendar-month {
     .md-event-calendar-month-row-header {
-      color: #EEE;
-      background: '{{primary-default}}';
+      color: '{{foreground-3}}';
+      background: '{{background-hue-1}}';
+      border-color: '{{foreground-4}}';
     }
 
     .md-event-calendar-month-row {
       background: '{{background-hue-1}}';
       border-color: '{{foreground-4}}';
+
 
       .md-event-calendar-month-cell-divider {
         border-color: '{{foreground-4}}';
@@ -27,10 +30,6 @@ md-event-calendar._md {
 
       .md-event-calendar-month-cell {
         border-color: '{{foreground-4}}';
-
-        &:last-child {
-          border-color: '{{foreground-4}}';
-        }
 
         .md-event-calendar-month-cell-content {
           .md-event-calendar-cell-data-label {
@@ -40,6 +39,26 @@ md-event-calendar._md {
           .md-event-calendar-cell-event-show-more-link {
             color: '{{primary-default}}';
           }
+        }
+
+
+
+        &.different-month {
+          background: '{{background-hue-2}}';
+        }
+
+        &.today {
+          box-shadow: inset 0px 0px 0px 1px '{{primary-A100}}';
+
+          .md-event-calendar-month-cell-content {
+            .md-event-calendar-cell-data-label {
+              color: '{{primary-default}}';
+            }
+          }
+        }
+
+        &:last-child {
+          border-color: '{{foreground-4}}';
         }
       }
     }
@@ -89,6 +108,28 @@ md-event-calendar._md {
     }
     .md-event-calendar-show-more-close svg {
       fill: '{{foreground-1}}';
+    }
+  }
+}
+
+
+
+md-event-calendar._md.md-primary {
+  md-event-calendar-header {
+    color: '{{background-100}}';
+    background: '{{primary-default}}';
+
+    md-event-calendar-next, md-event-calendar-prev {
+      .md-arrow svg {
+        fill: '{{background-100}}';
+      }
+    }
+  }
+
+  md-event-calendar-month {
+    .md-event-calendar-month-row-header {
+      color: '{{background-100}}';
+      background: '{{primary-default}}';
     }
   }
 }

@@ -13,6 +13,8 @@ angular
 /*@ngInject*/
 function addEventCalendarTheme($injector, $provide, EVENT_CALENDAR_THEME) {
   var $mdThemingProvider;
+
+  // if using angular material, then register the event theme css
   if ($injector.has('$mdThemingProvider')) {
     $mdThemingProvider = $injector.get('$mdThemingProvider');
     $mdThemingProvider.registerStyles(EVENT_CALENDAR_THEME);
@@ -22,6 +24,7 @@ function addEventCalendarTheme($injector, $provide, EVENT_CALENDAR_THEME) {
 }
 
 
+// polly fill rAF throttle if not using angular material
 function rAFDecorator($delegate) {
   $delegate.throttle = function(cb) {
     var queuedArgs, alreadyQueued, queueCb, context;

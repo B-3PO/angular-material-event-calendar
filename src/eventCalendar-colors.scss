@@ -2,6 +2,7 @@ md-event-calendar:not(._md) {
   md-event-calendar-header {
     color: #FFF;
     background: #AAA;
+    border-color: #DDD;
 
     md-event-calendar-next, md-event-calendar-prev {
       .md-arrow {
@@ -28,10 +29,6 @@ md-event-calendar:not(._md) {
       .md-event-calendar-month-cell {
         border-color: #DDD;
 
-        &:last-child {
-          border-color: #DDD;
-        }
-
         .md-event-calendar-month-cell-content {
           .md-event-calendar-cell-data-label {
             color: #666;
@@ -39,6 +36,23 @@ md-event-calendar:not(._md) {
 
           .md-event-calendar-cell-event-show-more-link {
             color: #4189b8;
+          }
+        }
+
+        &.different-month {
+          background: #BBB;
+        }
+
+        &:last-child {
+          border-color: #DDD;
+        }
+
+        &.today {
+          box-shadow: inset 0px 0px 0px 1px #AAA;
+          .md-event-calendar-month-cell-content {
+            .md-event-calendar-cell-data-label {
+              color: #333;
+            }
           }
         }
       }

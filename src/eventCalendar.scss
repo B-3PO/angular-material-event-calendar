@@ -6,6 +6,8 @@ md-event-calendar {
     display: flex;
     line-height: 64px;
     align-items: center;
+    border-style: solid;
+    border-width: 1px 1px 0 1px;
 
     &.md-center {
       justify-content: center;
@@ -14,7 +16,7 @@ md-event-calendar {
 
     md-event-calendar-title {
       display: block;
-      min-width: 150px;
+      min-width: 170px;
       text-align: center;
       font-size: 20px;
     }
@@ -52,6 +54,8 @@ md-event-calendar {
       font-size: 12px;
       font-weight: 500;
       padding-bottom: 12px;
+      border-style: solid;
+      border-width: 0 1px 1px 1px;
 
       .md-event-calendar-month-cell-header {
         flex: 1;
@@ -71,12 +75,6 @@ md-event-calendar {
       .md-event-calendar-month-cell {
         position: relative;
         flex: 1;
-
-        &:last-child {
-          border-style: solid;
-          border-width: 0 1px 0 0;
-        }
-
 
         .md-event-calendar-month-cell-spacer {
           margin-top: 100%
@@ -100,11 +98,12 @@ md-event-calendar {
 
           .md-event-calendar-cell-data-label {
             font-size: 13px;
-            padding: 6px;
+            padding: 8px;
           }
 
           .md-event-calendar-cell-event-spacer {
             margin: 4px 0 4px 0;
+            height: 23px;
           }
 
           .md-event-calendar-cell-event-show-more-link {
@@ -112,6 +111,20 @@ md-event-calendar {
             padding: 4px;
             padding-left: 8px;
             cursor: pointer;
+          }
+        }
+
+
+        &:last-child {
+          border-style: solid;
+          border-width: 0 1px 0 0;
+        }
+
+        &.today {
+          .md-event-calendar-month-cell-content {
+            .md-event-calendar-cell-data-label {
+              font-weight: 500;
+            }
           }
         }
       }
@@ -151,7 +164,7 @@ md-event-calendar {
     }
 
     &.md-end-left {
-      margin: 4px 4px 4px 13px;
+      margin: 4px 13px 4px 13px;
       border-radius: 0 2px 2px 0;
     }
 
@@ -246,8 +259,8 @@ md-event-calendar {
     .md-event-calendar-show-more-date-label {
       font-size: 13px;
       padding: 6px;
-      margin-left: -13px;
-      margin-top: -7px;
+      margin-left: -11px;
+      margin-top: -5px;
     }
   }
 }

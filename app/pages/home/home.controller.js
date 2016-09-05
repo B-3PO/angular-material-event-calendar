@@ -4,77 +4,49 @@ angular
 
 
 function HomeController($scope, $timeout) {
+
   $scope.events = [
     {
-      start: new Date(new Date().getTime() - 348 * 60 * 60 * 1000),
-      end: new Date(new Date().getTime() - 296 * 60 * 60 * 1000),
+      start: getDate(-120),
+      allDay: true,
       title: 'Event 1'
     },
     {
-      start: new Date(new Date().getTime() - 348 * 60 * 60 * 1000),
+      start: getDate(-144),
+      end: getDate(-96),
+      title: 'Event 1'
+    },
+    {
+      start: getDate(-96),
+      end: getDate(-96),
+      title: 'Event 1'
+    },
+    {
+      start: getDate(-96),
+      end: getDate(-24),
+      title: 'Event 1'
+    },
+    {
+      start: getDate(-96),
       allDay: true,
-      title: 'Event 2'
+      title: 'Event 1'
     },
     {
-      start: new Date(new Date().getTime() - 348 * 60 * 60 * 1000),
-      title: 'Event 3'
+      start: getDate(0),
+      end: getDate(48),
+      title: 'Event 1'
     },
-
-    {
-      start: new Date(new Date().getTime() - 348 * 60 * 60 * 1000),
-      title: 'Event 4'
-    },
-    {
-      start: new Date(new Date().getTime() - 348 * 60 * 60 * 1000),
-      end: new Date(new Date().getTime() - 296 * 60 * 60 * 1000),
-      title: 'Event 5'
-    },
-    {
-      start: new Date(),
-      title: 'Event One'
-    },
-    {
-      start: new Date(),
-      end: new Date(new Date().getTime() + 48 * 60 * 60 * 1000),
-      title: 'Event Two Two Two'
-    },
-    {
-      start: new Date(new Date().getTime() + 24 * 60 * 60 * 1000),
-      end: new Date(new Date().getTime() + 48 * 60 * 60 * 1000),
-      title: 'Event Three'
-    },
-    {
-      start: new Date(new Date().getTime() + 24 * 60 * 60 * 1000),
-      end: new Date(new Date().getTime() + 24 * 60 * 60 * 1000),
-      title: 'Event Three2'
-    },
-    {
-      start: new Date(new Date().getTime() + 72 * 60 * 60 * 1000),
-      end: new Date(new Date().getTime() + 72 * 60 * 60 * 1000),
-      title: 'Event four'
-    },
-
-    {
-      start: new Date(new Date().getTime() + 72 * 60 * 60 * 1000),
-      end: new Date(new Date().getTime() + 72 * 60 * 60 * 1000),
-      title: 'Event four2'
-    },
-    {
-      start: new Date(new Date().getTime() + 72 * 60 * 60 * 1000),
-      end: new Date(new Date().getTime() + 144 * 60 * 60 * 1000),
-      title: 'Event five'
-    },
-    {
-      start: new Date(new Date().getTime() + 144 * 60 * 60 * 1000),
-      end: new Date(new Date().getTime() + 144 * 60 * 60 * 1000),
-      title: 'Event six'
-    }
   ];
   $scope.selected = $scope.events[0];
 
   $scope.eventClicked = function (item) {
     console.log(item);
   };
+
+  function getDate(offsetHours) {
+    offsetHours = offsetHours || 0;
+    return new Date(new Date().getTime() + offsetHours * 60 * 60 * 1000);
+  }
 
 
   // $timeout(function () {
