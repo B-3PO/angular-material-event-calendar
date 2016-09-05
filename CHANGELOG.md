@@ -4,3 +4,4 @@
 *  Add previos and next month days to calendar view. These contain events
 *  Update theme to default to white for header background
 *  Add `md-primary` styling for header background and selected events. You can add the `md-primary` class to the `me-event-calendar` directive.
+*  Fix event sorting in month view to fit more events in a day
