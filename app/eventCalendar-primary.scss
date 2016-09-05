@@ -1,0 +1,62 @@
+$primary: #1458b1;
+$primaryContrastFont: #FFF;
+
+
+md-event-calendar:not(._md) {
+  md-event-calendar-header {
+    color: $primaryContrastFont;
+    background: $primary;
+
+    md-event-calendar-next, md-event-calendar-prev {
+      .md-arrow svg {
+        fill: $primaryContrastFont;
+      }
+    }
+  }
+
+
+  md-event-calendar-month {
+    .md-event-calendar-month-row-header {
+      color: $primaryContrastFont;
+      background: $primary;
+    }
+
+    .md-event-calendar-month-row {
+      .md-event-calendar-month-cell {
+        &.today {
+          box-shadow: inset 0px 0px 0px 1px $primary;
+
+          .md-event-calendar-month-cell-content {
+            .md-event-calendar-cell-data-label {
+              color: $primary;
+            }
+          }
+
+          .md-event-calendar-month-cell-divider {
+            border-color: $primary;
+          }
+        }
+      }
+    }
+
+
+    .md-event-calendar-cell-event {
+      &.md-selected {
+        color: $primaryContrastFont;
+        background: $primary;
+
+        &.md-continue-left, &.md-end-left {
+          &:after {
+            border-right-color: $primary;
+          }
+        }
+
+        &.md-continue-right, &.md-start-right {
+          &:after {
+            border-left-color: $primary;
+          }
+        }
+      }
+    }
+  }
+}

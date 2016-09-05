@@ -18,10 +18,6 @@ function eventCalendarDirective($injector, $parse) {
     scope: {
       events: '=mdEvents',
     },
-    // template: '<div class="md-event-calendar">'+
-    //   '<md-event-calendar-header></md-event-calendar-header>'+
-    //   '<md-event-calendar-month></md-event-calendar-month>'+
-    // '</div>',
     compile: compile,
     controller: controller,
     controllerAs: 'mdEventCalendar',

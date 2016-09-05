@@ -119,14 +119,6 @@ md-event-calendar {
           border-style: solid;
           border-width: 0 1px 0 0;
         }
-
-        &.today {
-          .md-event-calendar-month-cell-content {
-            .md-event-calendar-cell-data-label {
-              font-weight: 500;
-            }
-          }
-        }
       }
     }
   }
@@ -195,6 +187,7 @@ md-event-calendar {
         margin-top: -4px;
         border-top: 12px solid transparent;
         border-bottom: 11.5px solid transparent;
+        border-left:13px solid #EEE;
       }
     }
 
@@ -208,6 +201,7 @@ md-event-calendar {
         margin-top: -4px;
         border-top: 12px solid transparent;
         border-bottom: 11.5px solid transparent;
+        border-right:13px solid #EEE;
       }
     }
 
@@ -219,6 +213,30 @@ md-event-calendar {
 
     span {
       pointer-events: none;
+    }
+  }
+
+  // show more popup
+  .md-event-calendar-show-more-content .md-event-calendar-cell-event {
+    &.md-single,
+    &.md-end,
+    &.md-start-right
+    {
+      padding-left: 16px;
+    }
+
+    &.md-single,
+    &.md-end,
+    &.md-start-right
+    {
+      margin-left: 0;
+    }
+
+    &.md-single,
+    &.md-end,
+    &.md-end-left
+    {
+      margin-right: 0;
     }
   }
 

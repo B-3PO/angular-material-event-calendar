@@ -75,13 +75,13 @@ md-event-calendar._md {
 
     &.md-continue-left, &.md-end-left {
       &:after {
-        border-right:13px solid '{{foreground-4}}';
+        border-right-color:'{{foreground-4}}';
       }
     }
 
     &.md-continue-right, &.md-start-right {
       &:after {
-        border-left:13px solid '{{foreground-4}}';
+        border-left-color: '{{foreground-4}}';
       }
     }
 
@@ -89,13 +89,13 @@ md-event-calendar._md {
     &.md-selected {
       &.md-continue-left, &.md-end-left {
         &:after {
-          border-right:13px solid '{{primary-default}}';
+          border-right-color: '{{primary-default}}';
         }
       }
 
       &.md-continue-right, &.md-start-right {
         &:after {
-          border-left:13px solid '{{primary-default}}';
+          border-left-color: '{{primary-default}}';
         }
       }
     }
