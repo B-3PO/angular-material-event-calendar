@@ -48,7 +48,7 @@ md-event-calendar._md {
         }
 
         &.today {
-          box-shadow: inset 0px 0px 0px 1px '{{primary-A100}}';
+          box-shadow: inset 0px 0px 0px 1px '{{primary-default}}';
 
           .md-event-calendar-month-cell-content {
             .md-event-calendar-cell-data-label {
