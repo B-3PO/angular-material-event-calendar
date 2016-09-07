@@ -49,7 +49,7 @@ function rAFDecorator($delegate) {
 $templateCache.put("icons/ic_keyboard_arrow_right_black_24px.svg","<svg fill=\"#EEEEEE\" height=\"24\" viewBox=\"0 0 24 24\" width=\"24\" xmlns=\"http://www.w3.org/2000/svg\">\n    <path d=\"M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z\"/>\n    <path d=\"M0-.25h24v24H0z\" fill=\"none\"/>\n</svg>\n");}]);}());
 (function(){"use strict";angular.module("material.components.eventCalendar")
 
-.constant("EVENT_CALENDAR_THEME", "md-event-calendar._md md-event-calendar-header {\n  color: '{{foreground-1}}';\n  background: '{{background-hue-1}}';\n  border-color: '{{foreground-4}}'; }\n  md-event-calendar._md md-event-calendar-header md-event-calendar-next .md-arrow svg, md-event-calendar._md md-event-calendar-header md-event-calendar-prev .md-arrow svg {\n    fill: '{{foreground-2}}'; }\n\nmd-event-calendar._md md-event-calendar-month .md-event-calendar-month-row-header {\n  color: '{{foreground-3}}';\n  background: '{{background-hue-1}}';\n  border-color: '{{foreground-4}}'; }\n\nmd-event-calendar._md md-event-calendar-month .md-event-calendar-month-row {\n  background: '{{background-hue-1}}';\n  border-color: '{{foreground-4}}'; }\n  md-event-calendar._md md-event-calendar-month .md-event-calendar-month-row .md-event-calendar-month-cell-divider {\n    border-color: '{{foreground-4}}'; }\n  md-event-calendar._md md-event-calendar-month .md-event-calendar-month-row .md-event-calendar-month-cell {\n    border-color: '{{foreground-4}}'; }\n    md-event-calendar._md md-event-calendar-month .md-event-calendar-month-row .md-event-calendar-month-cell .md-event-calendar-month-cell-content .md-event-calendar-cell-data-label {\n      color: '{{foreground-3}}'; }\n    md-event-calendar._md md-event-calendar-month .md-event-calendar-month-row .md-event-calendar-month-cell .md-event-calendar-month-cell-content .md-event-calendar-cell-event-show-more-link {\n      color: '{{primary-default}}'; }\n    md-event-calendar._md md-event-calendar-month .md-event-calendar-month-row .md-event-calendar-month-cell.different-month {\n      background: '{{background-hue-2}}'; }\n    md-event-calendar._md md-event-calendar-month .md-event-calendar-month-row .md-event-calendar-month-cell.today {\n      box-shadow: inset 0px 0px 0px 1px '{{primary-default}}'; }\n      md-event-calendar._md md-event-calendar-month .md-event-calendar-month-row .md-event-calendar-month-cell.today .md-event-calendar-month-cell-content .md-event-calendar-cell-data-label {\n        color: '{{primary-default}}'; }\n    md-event-calendar._md md-event-calendar-month .md-event-calendar-month-row .md-event-calendar-month-cell:last-child {\n      border-color: '{{foreground-4}}'; }\n\nmd-event-calendar._md .md-event-calendar-cell-event {\n  background: '{{foreground-4}}';\n  color: '{{background-900}}'; }\n  md-event-calendar._md .md-event-calendar-cell-event.md-selected {\n    color: #EEE;\n    background: '{{primary-default}}'; }\n  md-event-calendar._md .md-event-calendar-cell-event.md-continue-left:after, md-event-calendar._md .md-event-calendar-cell-event.md-end-left:after {\n    border-right-color: '{{foreground-4}}'; }\n  md-event-calendar._md .md-event-calendar-cell-event.md-continue-right:after, md-event-calendar._md .md-event-calendar-cell-event.md-start-right:after {\n    border-left-color: '{{foreground-4}}'; }\n  md-event-calendar._md .md-event-calendar-cell-event.md-selected.md-continue-left:after, md-event-calendar._md .md-event-calendar-cell-event.md-selected.md-end-left:after {\n    border-right-color: '{{primary-default}}'; }\n  md-event-calendar._md .md-event-calendar-cell-event.md-selected.md-continue-right:after, md-event-calendar._md .md-event-calendar-cell-event.md-selected.md-start-right:after {\n    border-left-color: '{{primary-default}}'; }\n\nmd-event-calendar._md .md-event-calendar-show-more-container .md-event-calendar-show-more-date-label {\n  color: '{{foreground-3}}'; }\n\nmd-event-calendar._md .md-event-calendar-show-more-container .md-event-calendar-show-more-close svg {\n  fill: '{{foreground-1}}'; }\n\nmd-event-calendar._md.md-primary md-event-calendar-header {\n  color: '{{background-100}}';\n  background: '{{primary-default}}'; }\n  md-event-calendar._md.md-primary md-event-calendar-header md-event-calendar-next .md-arrow svg, md-event-calendar._md.md-primary md-event-calendar-header md-event-calendar-prev .md-arrow svg {\n    fill: '{{background-100}}'; }\n\nmd-event-calendar._md.md-primary md-event-calendar-month .md-event-calendar-month-row-header {\n  color: '{{background-100}}';\n  background: '{{primary-default}}'; }\n")
+.constant("EVENT_CALENDAR_THEME", "md-event-calendar._md md-event-calendar-header {\n  color: '{{foreground-1}}';\n  background: '{{background-hue-1}}';\n  border-color: '{{foreground-4}}'; }\n  md-event-calendar._md md-event-calendar-header md-event-calendar-next .md-arrow svg, md-event-calendar._md md-event-calendar-header md-event-calendar-prev .md-arrow svg {\n    fill: '{{foreground-2}}'; }\n\nmd-event-calendar._md md-event-calendar-month .md-event-calendar-month-row-header {\n  color: '{{foreground-3}}';\n  background: '{{background-hue-1}}';\n  border-color: '{{foreground-4}}'; }\n\nmd-event-calendar._md md-event-calendar-month .md-event-calendar-month-row {\n  background: '{{background-hue-1}}';\n  border-color: '{{foreground-4}}'; }\n  md-event-calendar._md md-event-calendar-month .md-event-calendar-month-row .md-event-calendar-month-cell-divider {\n    border-color: '{{foreground-4}}'; }\n  md-event-calendar._md md-event-calendar-month .md-event-calendar-month-row .md-event-calendar-month-cell {\n    border-color: '{{foreground-4}}'; }\n    md-event-calendar._md md-event-calendar-month .md-event-calendar-month-row .md-event-calendar-month-cell .md-event-calendar-month-cell-content .md-event-calendar-create-link {\n      color: '{{primary-default}}'; }\n    md-event-calendar._md md-event-calendar-month .md-event-calendar-month-row .md-event-calendar-month-cell .md-event-calendar-month-cell-content .md-event-calendar-cell-data-label {\n      color: '{{foreground-3}}'; }\n    md-event-calendar._md md-event-calendar-month .md-event-calendar-month-row .md-event-calendar-month-cell .md-event-calendar-month-cell-content .md-event-calendar-cell-event-show-more-link {\n      color: '{{primary-default}}'; }\n    md-event-calendar._md md-event-calendar-month .md-event-calendar-month-row .md-event-calendar-month-cell.different-month {\n      background: '{{background-hue-2}}'; }\n    md-event-calendar._md md-event-calendar-month .md-event-calendar-month-row .md-event-calendar-month-cell.today {\n      box-shadow: inset 0px 0px 0px 1px '{{primary-default}}'; }\n      md-event-calendar._md md-event-calendar-month .md-event-calendar-month-row .md-event-calendar-month-cell.today .md-event-calendar-month-cell-content .md-event-calendar-cell-data-label {\n        color: '{{primary-default}}'; }\n    md-event-calendar._md md-event-calendar-month .md-event-calendar-month-row .md-event-calendar-month-cell:last-child {\n      border-color: '{{foreground-4}}'; }\n\nmd-event-calendar._md .md-event-calendar-cell-event {\n  background: '{{foreground-4}}';\n  color: '{{background-900}}'; }\n  md-event-calendar._md .md-event-calendar-cell-event.md-selected {\n    color: #EEE;\n    background: '{{primary-default}}'; }\n  md-event-calendar._md .md-event-calendar-cell-event.md-continue-left:after, md-event-calendar._md .md-event-calendar-cell-event.md-end-left:after {\n    border-right-color: '{{foreground-4}}'; }\n  md-event-calendar._md .md-event-calendar-cell-event.md-continue-right:after, md-event-calendar._md .md-event-calendar-cell-event.md-start-right:after {\n    border-left-color: '{{foreground-4}}'; }\n  md-event-calendar._md .md-event-calendar-cell-event.md-selected.md-continue-left:after, md-event-calendar._md .md-event-calendar-cell-event.md-selected.md-end-left:after {\n    border-right-color: '{{primary-default}}'; }\n  md-event-calendar._md .md-event-calendar-cell-event.md-selected.md-continue-right:after, md-event-calendar._md .md-event-calendar-cell-event.md-selected.md-start-right:after {\n    border-left-color: '{{primary-default}}'; }\n\nmd-event-calendar._md .md-event-calendar-show-more-container .md-event-calendar-show-more-date-label {\n  color: '{{foreground-3}}'; }\n\nmd-event-calendar._md .md-event-calendar-show-more-container .md-event-calendar-show-more-close svg {\n  fill: '{{foreground-1}}'; }\n\nmd-event-calendar._md.md-primary md-event-calendar-header {\n  color: '{{background-100}}';\n  background: '{{primary-default}}'; }\n  md-event-calendar._md.md-primary md-event-calendar-header md-event-calendar-next .md-arrow svg, md-event-calendar._md.md-primary md-event-calendar-header md-event-calendar-prev .md-arrow svg {\n    fill: '{{background-100}}'; }\n\nmd-event-calendar._md.md-primary md-event-calendar-month .md-event-calendar-month-row-header {\n  color: '{{background-100}}';\n  background: '{{primary-default}}'; }\n")
 
 ;}());
 (function(){"use strict";
@@ -72,7 +72,7 @@ function eventCalendarDirective($injector, $parse) {
     restrict: 'E',
     require: ['mdEventCalendar', '?ngModel'],
     scope: {
-      events: '=mdEvents',
+      events: '=mdEvents'
     },
     compile: compile,
     controller: controller,
@@ -83,10 +83,13 @@ function eventCalendarDirective($injector, $parse) {
 
 
   function compile(tElement, tAttr) {
-    var fn = tAttr.mdEventClick ? $parse(tAttr.mdEventClick, null, true) : undefined;
+    var eventClickFunc = tAttr.mdEventClick ? $parse(tAttr.mdEventClick, null, true) : undefined;
+    var createEventClickFunc = tAttr.mdCreateEventClick ? $parse(tAttr.mdCreateEventClick, null, true) : undefined;
+    var mdCreateDisabled = tAttr.mdCreateDisabled ? $parse(tAttr.mdCreateDisabled) : undefined;
     tElement.append('<md-event-calendar-month></md-event-calendar-month>');
 
     return function postLink(scope, element, attrs, ctrls) {
+      var createDisabled = false;
       var mdEventCalendarCtrl = ctrls[0];
       var ngModelCtrl = ctrls[1];
       if ($mdTheming) {
@@ -94,10 +97,9 @@ function eventCalendarDirective($injector, $parse) {
         $mdTheming(element);
       }
 
-      mdEventCalendarCtrl.callEventClick = function (e, eventItem) {
-        if (!attrs.mdEventClick) { return; }
-        fn(scope.$parent, {$event: e, $selectedEvent: eventItem});
-      };
+      mdEventCalendarCtrl.isCreateDisabled = isCreateDisabled;
+      mdEventCalendarCtrl.callEventClick = callEventClick;
+      mdEventCalendarCtrl.createEventClick = createEventClick;
 
       if (ngModelCtrl) {
         ngModelCtrl.$render = render;
@@ -108,6 +110,34 @@ function eventCalendarDirective($injector, $parse) {
       function render() {
         var viewValue = ngModelCtrl.$viewValue || ngModelCtrl.$modelValue || [];
         mdEventCalendarCtrl.selectedEvents = [].concat(viewValue);
+      }
+
+
+      function callEventClick(e, eventItem) {
+        if (!attrs.mdEventClick) { return; }
+        eventClickFunc(scope.$parent, {$event: e, $selectedEvent: eventItem});
+      }
+
+      function createEventClick(e, date) {
+        if (!attrs.mdCreateEventClick) { return; }
+        createEventClickFunc(scope.$parent, {$event: e, $date: date});
+      }
+
+      function isCreateDisabled() {
+        return createDisabled;
+      }
+
+      // watch for create being disabled
+      if (mdCreateDisabled) {
+        scope.$watch(function () { return mdCreateDisabled(scope.$parent); }, function (value) {
+          createDisabled = value;
+          element.toggleClass('md-create-disabled', value);
+        });
+
+      // if no string was given check to see if the attr exists
+      } else if (tAttr.mdCreateDisabled !== undefined) {
+        createDisabled = true;
+        element.addClass('md-create-disabled');
       }
     };
   }
@@ -123,19 +153,22 @@ function eventCalendarDirective($injector, $parse) {
     vm.selectedEvents = [];
     vm.today = $$mdEventCalendarUtil.createDateAtMidnight();
     vm.date = $$mdEventCalendarUtil.createDateAtMidnight();
+    vm.isToday = $$mdEventCalendarUtil.isSameDay(vm.date, new Date());
     vm.monthDisplay = $$mdEventCalendarUtil.months[vm.date.getMonth()];
     vm.yearDisplay = vm.date.getFullYear();
-
+    vm.isTodayDisabled = true;
+    vm.showCreateLink = $attrs.mdShowCreateLink !== undefined && $attrs.mdShowCreateLink !== 'false';
     vm.nextMonth = nextMonth;
     vm.previousMonth = previousMonth;
     vm.selectEvent = selectEvent;
-
+    vm.setToday = setToday;
 
 
     function nextMonth() {
       vm.date = $$mdEventCalendarUtil.getDateInNextMonth(vm.date);
       vm.monthDisplay = $$mdEventCalendarUtil.months[vm.date.getMonth()];
       vm.yearDisplay = vm.date.getFullYear();
+      vm.isTodayDisabled = vm.date.getMonth() === (new Date()).getMonth();
     }
 
 
@@ -143,6 +176,14 @@ function eventCalendarDirective($injector, $parse) {
       vm.date = $$mdEventCalendarUtil.getDateInPreviousMonth(vm.date);
       vm.monthDisplay = $$mdEventCalendarUtil.months[vm.date.getMonth()];
       vm.yearDisplay = vm.date.getFullYear();
+      vm.isTodayDisabled = vm.date.getMonth() === (new Date()).getMonth();
+    }
+
+    function setToday() {
+      vm.date = new Date();
+      vm.monthDisplay = $$mdEventCalendarUtil.months[vm.date.getMonth()];
+      vm.yearDisplay = vm.date.getFullYear();
+      vm.isTodayDisabled = true;
     }
 
 
@@ -257,6 +298,10 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
 
   function month(options) {
     var calendarStartDate;
+    var d = 0;
+    var rowNumber = 1;
+    var firstCalendarDay = true;
+    var lastCalendarDay = false;
     var today = $$mdEventCalendarUtil.createDateAtMidnight();
     var date = $$mdEventCalendarUtil.isValidDate(options.date) ? options.date : new Date();
     var firstDayOfMonth = $$mdEventCalendarUtil.getFirstDateOfMonth(date);
@@ -265,15 +310,11 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
     var events = filterCurrentCalendar(date, options.events);
     events.forEach(cleanEvent);
     var selected = options.selected  || [];
-    var rowNumber = 1;
     var monthElement = createMonthElement();
     var row = createRowElement();
     monthElement.appendChild(row);
-    var firstCalendarDay = true;
     var cellSize = (options.bounds.width / 7) - 48;
     var maxEvents = Math.floor(cellSize / 24);
-    var d = 0;
-
 
 
     // days from last month
@@ -281,18 +322,7 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
       calendarStartDate = $$mdEventCalendarUtil.getFirstDateOfMonth(date);
       calendarStartDate.setDate(calendarStartDate.getDate() - firstDayOfTheWeek);
       while (d < firstDayOfTheWeek) {
-        row.appendChild(createCellElement({
-          date: calendarStartDate,
-          today: today,
-          dayOfWeek: d,
-          differentMonth: true,
-          events: events,
-          isFirstDay: firstCalendarDay,
-          isLastDay: false,
-          maxEvents: maxEvents,
-          selected: selected,
-          labelProperty: options.labelProperty
-        }));
+        row.appendChild(createCellElement(getCellOptions(calendarStartDate, d, true)));
         firstCalendarDay = false;
         d += 1;
         calendarStartDate.setDate(calendarStartDate.getDate() + 1);
@@ -305,7 +335,6 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
     // we know when to start a new row.
     var dayOfWeek = firstDayOfTheWeek;
     var iterationDate = firstDayOfMonth;
-    var lastCalendarDay = false;
     d = 1;
     while (d <= numberOfDaysInMonth) {
       // If we've reached the end of the week, start a new row.
@@ -321,17 +350,7 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
       }
 
       iterationDate.setDate(d);
-      row.appendChild(createCellElement({
-        date: iterationDate,
-        today: today,
-        dayOfWeek: dayOfWeek,
-        events: events,
-        isFirstDay: firstCalendarDay,
-        isLastDay: lastCalendarDay,
-        maxEvents: maxEvents,
-        selected: selected,
-        labelProperty: options.labelProperty
-      }));
+      row.appendChild(createCellElement(getCellOptions(iterationDate, dayOfWeek)));
       firstCalendarDay = false;
       dayOfWeek += 1;
       d += 1;
@@ -345,24 +364,30 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
         lastCalendarDay = true;
       }
       iterationDate.setDate(d);
-      row.appendChild(createCellElement({
-        date: iterationDate,
-        today: today,
-        dayOfWeek: dayOfWeek,
-        differentMonth: true,
-        events: events,
-        isFirstDay: false,
-        isLastDay: lastCalendarDay,
-        maxEvents: maxEvents,
-        selected: selected,
-        labelProperty: options.labelProperty
-      }));
+      row.appendChild(createCellElement(getCellOptions(iterationDate, dayOfWeek, true)));
       dayOfWeek += 1;
       d += 1;
     }
 
 
     return monthElement;
+
+
+    function getCellOptions(cellDate, dayOfWeek, differentMonth) {
+      return {
+        date: cellDate, // date for day on calendar
+        today: today, // todays date at midnight
+        dayOfWeek: dayOfWeek, // 0-6 (sun-sat)
+        differentMonth: differentMonth || false, // previous or next month overflow days
+        events: events, // events arr
+        isFirstDay: firstCalendarDay, // is first day of current month view. not the first day of month(unless that is sunday)
+        isLastDay: lastCalendarDay, // last day of calenday. not last day of month (unless sat)
+        maxEvents: maxEvents, // max events that can be displayed in a day cell. based on cell size
+        selected: selected, // array of selected events. from ngModel
+        labelProperty: options.labelProperty, // name of the label property. default: title
+        showCreateLink: options.showCreateLink // show create link on hover of day cell
+      };
+    }
   }
 
 
@@ -370,6 +395,7 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
   function createCellElement(options) {
     var cell = document.createElement('div');
     cell.classList.add('md-event-calendar-month-cell');
+    cell.setAttribute('md-date', options.date);
     if (options.differentMonth === true) { cell.classList.add('different-month'); }
     if ($$mdEventCalendarUtil.isSameDay(options.date, options.today)) { cell.classList.add('today'); }
 
@@ -382,13 +408,28 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
     cell.appendChild(divider);
 
     var cellContent = document.createElement('div');
+    cellContent.setAttribute('md-create-event', '');
     cellContent.classList.add('md-event-calendar-month-cell-content');
     cell.appendChild(cellContent);
 
+    var cellHeader = document.createElement('div');
+    cellHeader.setAttribute('md-create-event', '');
+    cellHeader.classList.add('layout-row');
+    cellContent.appendChild(cellHeader);
+
     var dateLabel = document.createElement('div');
+    dateLabel.setAttribute('md-create-event', '');
     dateLabel.classList.add('md-event-calendar-cell-data-label');
     dateLabel.textContent = $$mdEventCalendarUtil.dates[options.date.getDate()];
-    cellContent.appendChild(dateLabel);
+    cellHeader.appendChild(dateLabel);
+
+    if (options.showCreateLink === true) {
+      var createLink = document.createElement('div');
+      createLink.setAttribute('md-create-event', '');
+      createLink.classList.add('md-event-calendar-create-link');
+      createLink.textContent = 'Create';
+      cellHeader.appendChild(createLink);
+    }
 
     createEventElements(cellContent, options);
 
@@ -500,6 +541,11 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
     // single day event
     if (isStartThisDay && (options.allDay || isEndThisDay)) {
       className = 'single';
+      hasLabel = true;
+
+    // starts today on last day of week
+    } else if (isStartThisDay && options.dayOfWeek === 6) {
+      className = 'start-right';
       hasLabel = true;
 
     // starts today
@@ -685,9 +731,12 @@ function eventCalendarMonthDirective($$mdEventCalendarBuilder, $window, $$rAF) {
 
 
     element.on('click', function (e) {
+      if (mdEventCalendarCtrl.isCreateDisabled() === true) { return; }
+
       var eventId = e.target.getAttribute('md-event-id');
       var showMore = e.target.getAttribute('md-show-more');
       var showMoreClose = e.target.getAttribute('md-show-more-close');
+      var createEvent = e.target.getAttribute('md-create-event') !== null;
 
       if (eventId) {
         var eventItem = getIdFromHash(eventId);
@@ -703,7 +752,26 @@ function eventCalendarMonthDirective($$mdEventCalendarBuilder, $window, $$rAF) {
       if (showMoreClose) {
         angular.element(e.target.parentNode).remove();
       }
+
+      if (createEvent) {
+        var cellDate = getDateFromCreate(e.target);
+        if (cellDate !== undefined) {
+          scope.$apply(function () {
+            mdEventCalendarCtrl.createEventClick(e, cellDate);
+          });
+        }
+      }
     });
+
+    function getDateFromCreate(el) {
+      var dateString = el.getAttribute('md-date');
+      while (dateString === null && el.nodeName !== 'MD-EVENT-CALENDAR-MONTH') {
+        el = el.parentNode;
+        dateString = el.getAttribute('md-date');
+      }
+
+      return dateString === null ? undefined : new Date(dateString);
+    }
 
 
     function buildView() {
@@ -712,6 +780,7 @@ function eventCalendarMonthDirective($$mdEventCalendarBuilder, $window, $$rAF) {
         events: mdEventCalendarCtrl.events,
         selected: mdEventCalendarCtrl.selectedEvents,
         labelProperty: mdEventCalendarCtrl.labelProperty,
+        showCreateLink: mdEventCalendarCtrl.showCreateLink,
         bounds: {
           width: mdEventCalendarCtrl.$element[0].offsetWidth
         }
@@ -803,6 +872,26 @@ function mdEventCalendarTitleDirective() {
   function link(scope, element, attrs, ctrl) {
     scope.mdEventCalendar = ctrl;
   }
+}
+}());
+(function(){"use strict";angular
+  .module('material.components.eventCalendar')
+  .directive('mdEventCalendarToday', mdEventCalendarTodayDirective);
+
+/**
+ * @ngdoc directive
+ * @name mdEventCalendarTodayDirective
+ * @module material.components.eventCalendar
+ *
+ * @restrict E
+ **/
+function mdEventCalendarTodayDirective() {
+  var directive = {
+    restrict: 'E',
+    require: '^mdEventCalendar',
+    template: '<md-button class="md-button" ng-click="mdEventCalendar.setToday()" aria-label="today" ng-disabled="mdEventCalendar.isTodayDisabled">Today</md-button>'
+  };
+  return directive;
 }
 }());
 (function(){"use strict";
