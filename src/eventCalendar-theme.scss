@@ -32,6 +32,10 @@ md-event-calendar._md {
         border-color: '{{foreground-4}}';
 
         .md-event-calendar-month-cell-content {
+          .md-event-calendar-create-link {
+            color: '{{primary-default}}';
+          }
+
           .md-event-calendar-cell-data-label {
             color: '{{foreground-3}}';
           }

@@ -8,6 +8,7 @@ $eventBackground: #DDD;
 $eventBackgroundSelected: #EEE;
 $rowBackground: #FFF;
 $previousMonthDayBackground: #F5F5F5;
+$buttonHover: rgba(158,158,158,0.2);
 
 // Fonts
 $eventFont: #666;
@@ -16,6 +17,8 @@ $monthDayfont: #999;
 $monthDayHeaderFont: #999;
 $showMoreLink: #4189b8;
 $eventSelectedFont: #888;
+$button: #333;
+$buttonDisabled: #CCC;
 
 
 
@@ -31,6 +34,17 @@ md-event-calendar:not(._md) {
         fill: $headerFont;
       }
     }
+  }
+
+  .md-button:not([disabled]) {
+    color: $button;
+    &:hover {
+      background: $buttonHover;
+    }
+  }
+
+  .md-button[disabled] {
+    color: $buttonDisabled;
   }
 
 
@@ -53,6 +67,10 @@ md-event-calendar:not(._md) {
         border-color: $border;
 
         .md-event-calendar-month-cell-content {
+          .md-event-calendar-create-link {
+            color: $showMoreLink;
+          }
+
           .md-event-calendar-cell-data-label {
             color: $monthDayfont;
           }

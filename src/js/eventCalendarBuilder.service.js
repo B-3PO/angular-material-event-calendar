@@ -91,6 +91,10 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
 
   function month(options) {
     var calendarStartDate;
+    var d = 0;
+    var rowNumber = 1;
+    var firstCalendarDay = true;
+    var lastCalendarDay = false;
     var today = $$mdEventCalendarUtil.createDateAtMidnight();
     var date = $$mdEventCalendarUtil.isValidDate(options.date) ? options.date : new Date();
     var firstDayOfMonth = $$mdEventCalendarUtil.getFirstDateOfMonth(date);
@@ -99,15 +103,11 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
     var events = filterCurrentCalendar(date, options.events);
     events.forEach(cleanEvent);
     var selected = options.selected  || [];
-    var rowNumber = 1;
     var monthElement = createMonthElement();
     var row = createRowElement();
     monthElement.appendChild(row);
-    var firstCalendarDay = true;
     var cellSize = (options.bounds.width / 7) - 48;
     var maxEvents = Math.floor(cellSize / 24);
-    var d = 0;
-
 
 
     // days from last month
@@ -115,18 +115,7 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
       calendarStartDate = $$mdEventCalendarUtil.getFirstDateOfMonth(date);
       calendarStartDate.setDate(calendarStartDate.getDate() - firstDayOfTheWeek);
       while (d < firstDayOfTheWeek) {
-        row.appendChild(createCellElement({
-          date: calendarStartDate,
-          today: today,
-          dayOfWeek: d,
-          differentMonth: true,
-          events: events,
-          isFirstDay: firstCalendarDay,
-          isLastDay: false,
-          maxEvents: maxEvents,
-          selected: selected,
-          labelProperty: options.labelProperty
-        }));
+        row.appendChild(createCellElement(getCellOptions(calendarStartDate, d, true)));
         firstCalendarDay = false;
         d += 1;
         calendarStartDate.setDate(calendarStartDate.getDate() + 1);
@@ -139,7 +128,6 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
     // we know when to start a new row.
     var dayOfWeek = firstDayOfTheWeek;
     var iterationDate = firstDayOfMonth;
-    var lastCalendarDay = false;
     d = 1;
     while (d <= numberOfDaysInMonth) {
       // If we've reached the end of the week, start a new row.
@@ -155,17 +143,7 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
       }
 
       iterationDate.setDate(d);
-      row.appendChild(createCellElement({
-        date: iterationDate,
-        today: today,
-        dayOfWeek: dayOfWeek,
-        events: events,
-        isFirstDay: firstCalendarDay,
-        isLastDay: lastCalendarDay,
-        maxEvents: maxEvents,
-        selected: selected,
-        labelProperty: options.labelProperty
-      }));
+      row.appendChild(createCellElement(getCellOptions(iterationDate, dayOfWeek)));
       firstCalendarDay = false;
       dayOfWeek += 1;
       d += 1;
@@ -179,24 +157,30 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
         lastCalendarDay = true;
       }
       iterationDate.setDate(d);
-      row.appendChild(createCellElement({
-        date: iterationDate,
-        today: today,
-        dayOfWeek: dayOfWeek,
-        differentMonth: true,
-        events: events,
-        isFirstDay: false,
-        isLastDay: lastCalendarDay,
-        maxEvents: maxEvents,
-        selected: selected,
-        labelProperty: options.labelProperty
-      }));
+      row.appendChild(createCellElement(getCellOptions(iterationDate, dayOfWeek, true)));
       dayOfWeek += 1;
       d += 1;
     }
 
 
     return monthElement;
+
+
+    function getCellOptions(cellDate, dayOfWeek, differentMonth) {
+      return {
+        date: cellDate, // date for day on calendar
+        today: today, // todays date at midnight
+        dayOfWeek: dayOfWeek, // 0-6 (sun-sat)
+        differentMonth: differentMonth || false, // previous or next month overflow days
+        events: events, // events arr
+        isFirstDay: firstCalendarDay, // is first day of current month view. not the first day of month(unless that is sunday)
+        isLastDay: lastCalendarDay, // last day of calenday. not last day of month (unless sat)
+        maxEvents: maxEvents, // max events that can be displayed in a day cell. based on cell size
+        selected: selected, // array of selected events. from ngModel
+        labelProperty: options.labelProperty, // name of the label property. default: title
+        showCreateLink: options.showCreateLink // show create link on hover of day cell
+      };
+    }
   }
 
 
@@ -204,6 +188,7 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
   function createCellElement(options) {
     var cell = document.createElement('div');
     cell.classList.add('md-event-calendar-month-cell');
+    cell.setAttribute('md-date', options.date);
     if (options.differentMonth === true) { cell.classList.add('different-month'); }
     if ($$mdEventCalendarUtil.isSameDay(options.date, options.today)) { cell.classList.add('today'); }
 
@@ -216,13 +201,28 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
     cell.appendChild(divider);
 
     var cellContent = document.createElement('div');
+    cellContent.setAttribute('md-create-event', '');
     cellContent.classList.add('md-event-calendar-month-cell-content');
     cell.appendChild(cellContent);
 
+    var cellHeader = document.createElement('div');
+    cellHeader.setAttribute('md-create-event', '');
+    cellHeader.classList.add('layout-row');
+    cellContent.appendChild(cellHeader);
+
     var dateLabel = document.createElement('div');
+    dateLabel.setAttribute('md-create-event', '');
     dateLabel.classList.add('md-event-calendar-cell-data-label');
     dateLabel.textContent = $$mdEventCalendarUtil.dates[options.date.getDate()];
-    cellContent.appendChild(dateLabel);
+    cellHeader.appendChild(dateLabel);
+
+    if (options.showCreateLink === true) {
+      var createLink = document.createElement('div');
+      createLink.setAttribute('md-create-event', '');
+      createLink.classList.add('md-event-calendar-create-link');
+      createLink.textContent = 'Create';
+      cellHeader.appendChild(createLink);
+    }
 
     createEventElements(cellContent, options);
 
@@ -334,6 +334,11 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
     // single day event
     if (isStartThisDay && (options.allDay || isEndThisDay)) {
       className = 'single';
+      hasLabel = true;
+
+    // starts today on last day of week
+    } else if (isStartThisDay && options.dayOfWeek === 6) {
+      className = 'start-right';
       hasLabel = true;
 
     // starts today

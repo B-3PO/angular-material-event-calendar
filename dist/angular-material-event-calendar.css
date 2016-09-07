@@ -5,6 +5,14 @@ md-event-calendar:not(._md) md-event-calendar-header {
   md-event-calendar:not(._md) md-event-calendar-header md-event-calendar-next .md-arrow svg, md-event-calendar:not(._md) md-event-calendar-header md-event-calendar-prev .md-arrow svg {
     fill: #666; }
 
+md-event-calendar:not(._md) .md-button:not([disabled]) {
+  color: #333; }
+  md-event-calendar:not(._md) .md-button:not([disabled]):hover {
+    background: rgba(158, 158, 158, 0.2); }
+
+md-event-calendar:not(._md) .md-button[disabled] {
+  color: #CCC; }
+
 md-event-calendar:not(._md) md-event-calendar-month .md-event-calendar-month-row-header {
   color: #999;
   background: #FFF;
@@ -17,6 +25,8 @@ md-event-calendar:not(._md) md-event-calendar-month .md-event-calendar-month-row
     border-color: #DDD; }
   md-event-calendar:not(._md) md-event-calendar-month .md-event-calendar-month-row .md-event-calendar-month-cell {
     border-color: #DDD; }
+    md-event-calendar:not(._md) md-event-calendar-month .md-event-calendar-month-row .md-event-calendar-month-cell .md-event-calendar-month-cell-content .md-event-calendar-create-link {
+      color: #4189b8; }
     md-event-calendar:not(._md) md-event-calendar-month .md-event-calendar-month-row .md-event-calendar-month-cell .md-event-calendar-month-cell-content .md-event-calendar-cell-data-label {
       color: #999; }
     md-event-calendar:not(._md) md-event-calendar-month .md-event-calendar-month-row .md-event-calendar-month-cell .md-event-calendar-month-cell-content .md-event-calendar-cell-event-show-more-link {
@@ -147,9 +157,25 @@ md-event-calendar md-event-calendar-month .md-event-calendar-month-row {
       bottom: 0;
       left: 0;
       right: 0; }
+      md-event-calendar md-event-calendar-month .md-event-calendar-month-row .md-event-calendar-month-cell .md-event-calendar-month-cell-content .md-event-calendar-create-link {
+        -ms-flex-item-align: center;
+            align-self: center;
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: 500;
+        padding-right: 12px;
+        cursor: pointer;
+        opacity: 0;
+        -webkit-transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); }
+      md-event-calendar md-event-calendar-month .md-event-calendar-month-row .md-event-calendar-month-cell .md-event-calendar-month-cell-content:hover .md-event-calendar-create-link {
+        opacity: 1; }
       md-event-calendar md-event-calendar-month .md-event-calendar-month-row .md-event-calendar-month-cell .md-event-calendar-month-cell-content .md-event-calendar-cell-data-label {
         font-size: 13px;
-        padding: 8px; }
+        padding: 8px;
+        -webkit-box-flex: 1;
+            -ms-flex: 1;
+                flex: 1; }
       md-event-calendar md-event-calendar-month .md-event-calendar-month-row .md-event-calendar-month-cell .md-event-calendar-month-cell-content .md-event-calendar-cell-event-spacer {
         margin: 4px 0 4px 0;
         height: 23px; }
@@ -180,13 +206,13 @@ md-event-calendar .md-event-calendar-cell-event {
     z-index: 1;
     position: relative; }
   md-event-calendar .md-event-calendar-cell-event.md-start-right {
-    margin: 4px 13px 4px 0;
+    margin: 4px 13px 4px 4px;
     border-radius: 2px 0 0 2px; }
   md-event-calendar .md-event-calendar-cell-event.md-end {
     margin: 4px 4px 4px 0;
     border-radius: 0 2px 2px 0; }
   md-event-calendar .md-event-calendar-cell-event.md-end-left {
-    margin: 4px 13px 4px 13px;
+    margin: 4px 4px 4px 13px;
     border-radius: 0 2px 2px 0; }
   md-event-calendar .md-event-calendar-cell-event.md-continue, md-event-calendar .md-event-calendar-cell-event.md-continue-both {
     margin: 4px 0 4px 0;
@@ -265,3 +291,6 @@ md-event-calendar .md-event-calendar-show-more-container {
     padding: 6px;
     margin-left: -11px;
     margin-top: -5px; }
+
+md-event-calendar.md-create-disabled md-event-calendar-month .md-event-calendar-month-row .md-event-calendar-month-cell .md-event-calendar-month-cell-content .md-event-calendar-create-link {
+  display: none; }

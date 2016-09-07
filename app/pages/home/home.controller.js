@@ -7,6 +7,11 @@ function HomeController($scope, $timeout) {
 
   $scope.events = [
     {
+      start: getDate(-6, 10),
+      end: getDate(-6, 11),
+      title: 'Event 1'
+    },
+    {
       start: getDate(0, 10),
       end: getDate(1, 11),
       title: 'Event 1'
@@ -48,6 +53,10 @@ function HomeController($scope, $timeout) {
     console.log(item);
   };
 
+  $scope.createClicked = function (date) {
+    console.log(date);
+  };
+
   function getDate(offsetDays, hour) {
     offsetDays = offsetDays || 0;
     var offset = offsetDays * 24 * 60 * 60 * 1000;
@@ -57,6 +66,7 @@ function HomeController($scope, $timeout) {
   }
 
 
+  $scope.dis = false;
   // $timeout(function () {
   //   $scope.events.push({
   //     date: new Date(new Date().getTime() + 48 * 60 * 60 * 1000),

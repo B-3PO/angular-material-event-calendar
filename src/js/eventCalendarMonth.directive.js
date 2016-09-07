@@ -45,9 +45,12 @@ function eventCalendarMonthDirective($$mdEventCalendarBuilder, $window, $$rAF) {
 
 
     element.on('click', function (e) {
+      if (mdEventCalendarCtrl.isCreateDisabled() === true) { return; }
+
       var eventId = e.target.getAttribute('md-event-id');
       var showMore = e.target.getAttribute('md-show-more');
       var showMoreClose = e.target.getAttribute('md-show-more-close');
+      var createEvent = e.target.getAttribute('md-create-event') !== null;
 
       if (eventId) {
         var eventItem = getIdFromHash(eventId);
@@ -63,7 +66,26 @@ function eventCalendarMonthDirective($$mdEventCalendarBuilder, $window, $$rAF) {
       if (showMoreClose) {
         angular.element(e.target.parentNode).remove();
       }
+
+      if (createEvent) {
+        var cellDate = getDateFromCreate(e.target);
+        if (cellDate !== undefined) {
+          scope.$apply(function () {
+            mdEventCalendarCtrl.createEventClick(e, cellDate);
+          });
+        }
+      }
     });
+
+    function getDateFromCreate(el) {
+      var dateString = el.getAttribute('md-date');
+      while (dateString === null && el.nodeName !== 'MD-EVENT-CALENDAR-MONTH') {
+        el = el.parentNode;
+        dateString = el.getAttribute('md-date');
+      }
+
+      return dateString === null ? undefined : new Date(dateString);
+    }
 
 
     function buildView() {
@@ -72,6 +94,7 @@ function eventCalendarMonthDirective($$mdEventCalendarBuilder, $window, $$rAF) {
         events: mdEventCalendarCtrl.events,
         selected: mdEventCalendarCtrl.selectedEvents,
         labelProperty: mdEventCalendarCtrl.labelProperty,
+        showCreateLink: mdEventCalendarCtrl.showCreateLink,
         bounds: {
           width: mdEventCalendarCtrl.$element[0].offsetWidth
         }

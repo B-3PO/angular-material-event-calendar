@@ -1,13 +1,20 @@
 <md-event-calendar
-  class="md-primary"
   ng-model="selected"
   md-events="events"
   md-event-click="eventClicked($selectedEvent)"
+  md-create-event-click="createClicked($date)"
   md-label="title"
+  md-show-create-link
+  md-create-disabled="dis"
 >
-  <md-event-calendar-header class="md-center">
+  <md-event-calendar-header>
+    <div flex></div>
     <md-event-calendar-prev></md-event-calendar-prev>
     <md-event-calendar-title></md-event-calendar-title>
     <md-event-calendar-next></md-event-calendar-next>
+    <div flex layout="row">
+      <span flex></span>
+      <md-event-calendar-today></md-event-calendar-today>
+    </div>
   </md-event-calendar-header>
 </md-event-calendar>
