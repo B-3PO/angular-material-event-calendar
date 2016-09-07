@@ -40,9 +40,6 @@ md-event-calendar {
 
 
 
-
-
-
 md-event-calendar {
   md-event-calendar-month {
     .md-event-calendar-month-row-header {
@@ -96,9 +93,27 @@ md-event-calendar {
           left: 0;
           right: 0;
 
+          .md-event-calendar-create-link {
+            align-self: center;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: 500;
+            padding-right: 12px;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+          }
+
+          &:hover {
+            .md-event-calendar-create-link {
+              opacity: 1;
+            }
+          }
+
           .md-event-calendar-cell-data-label {
             font-size: 13px;
             padding: 8px;
+            flex: 1;
           }
 
           .md-event-calendar-cell-event-spacer {
@@ -147,7 +162,7 @@ md-event-calendar {
     }
 
     &.md-start-right {
-      margin: 4px 13px 4px 0;
+      margin: 4px 13px 4px 4px;
       border-radius: 2px 0 0 2px;
     }
 
@@ -157,7 +172,7 @@ md-event-calendar {
     }
 
     &.md-end-left {
-      margin: 4px 13px 4px 13px;
+      margin: 4px 4px 4px 13px;
       border-radius: 0 2px 2px 0;
     }
 
@@ -280,6 +295,22 @@ md-event-calendar {
       padding: 6px;
       margin-left: -11px;
       margin-top: -5px;
+    }
+  }
+}
+
+
+
+md-event-calendar.md-create-disabled {
+  md-event-calendar-month {
+    .md-event-calendar-month-row {
+      .md-event-calendar-month-cell {
+        .md-event-calendar-month-cell-content {
+          .md-event-calendar-create-link {
+            display: none;
+          }
+        }
+      }
     }
   }
 }

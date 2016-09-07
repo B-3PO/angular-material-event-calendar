@@ -53,6 +53,10 @@ md-event-calendar:not(._md) {
         border-color: $border;
 
         .md-event-calendar-month-cell-content {
+          .md-event-calendar-create-link {
+            color: $showMoreLink;
+          }
+
           .md-event-calendar-cell-data-label {
             color: $monthDayfont;
           }
