@@ -112,6 +112,9 @@ gulp test
   md-events="events"
   md-event-click="eventClicked($selectedEvent)"
   md-label="title",
+  md-show-create-link="true"
+  md-create-event-click="eventCreatea($date)"
+  md-create-disabled="true"
   class="md-primary"
 >
   <md-event-calendar-header class="md-center">
@@ -159,6 +162,7 @@ angular.module('myApp', ['ngMaterial', 'material.components.expansionPanels']);
 * [mdEventCalendarNext](#mdEventCalendarNext)
 * [mdEventCalendarPrev](#mdEventCalendarPrev)
 * [mdEventCalendarTitle](#mdEventCalendarTitle)
+* [mdEventCalendarToday](#mdEventCalendarToday)
 
 
 
@@ -196,8 +200,12 @@ angular.module('myApp', ['ngMaterial', 'material.components.expansionPanels']);
 <md-event-calendar
   [ng-model=""]
   [md-events=""]
+  [md-label=""]
   [md-event-click=""]
-  [md-label=""]>
+  [md-create-event-click=""]
+  [md-show-click-link=""]
+  [md-create-disabled=""]
+>
 ...
 </md-event-calendar>
 ```
@@ -208,8 +216,11 @@ angular.module('myApp', ['ngMaterial', 'material.components.expansionPanels']);
 | :--: | :--: | :--: |
 | ng-model | model= | <p>Optional model to hold selected event object</p>  |
 | md-events | array | <p>Array of events</p>  |
-| md-event-click | function | <p>Function to be called on event click. You can pass in <code>$selectedEvent</code> to get the event object you clicked on</p>  |
 | md-label | string=title | <p>Property name for title display</p>  |
+| md-event-click | function | <p>Function to be called on event click. You can pass in <code>$selectedEvent</code> to get the event object you clicked on</p>  |
+| md-create-event-click | function | <p>Function to be called when empty area of day is clicked. You can pass in <code>$date</code> to get the days date you clicked on</p>  |
+| md-show-create-link | boolean | <p>Show `Create` in the top right corner when cell is hovered over</p>  |
+| md-create-disabled | boolean | <p>Hides create link and disabled create click event</p>  |
 
 
 
@@ -255,6 +266,16 @@ This title will show the appropriate title for the calendar view
 <md-event-calendar-title>
 </md-event-calendar-title>
 ```
+
+## <a name="mdEventCalendarToday"></a> mdEventCalendarToday
+
+A button that can be clicked to take the month to the current month. This button is disabled if you are already on the current month
+```html
+<md-event-calendar-today>
+</md-event-calendar-today>
+```
+
+
 
 
 
