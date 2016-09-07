@@ -13,7 +13,7 @@ function mdEventCalendarTodayDirective() {
   var directive = {
     restrict: 'E',
     require: '^mdEventCalendar',
-    template: '<md-button class="" ng-click="mdEventCalendar.setToday()" aria-label="today" ng-disabled="mdEventCalendar.isTodayDisabled">Today</md-button>'
+    template: '<md-button class="md-button" ng-click="mdEventCalendar.setToday()" aria-label="today" ng-disabled="mdEventCalendar.isTodayDisabled">Today</md-button>'
   };
   return directive;
 }
