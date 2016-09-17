@@ -45,6 +45,25 @@ function HomeController($scope, $timeout) {
       start: getDate(6, 12),
       allDay: true,
       title: 'Event 7'
+    },
+
+
+
+
+    {
+      start: getDate(8, 12),
+      end: getDate(8, 13),
+      title: 'Event 5'
+    },
+    {
+      start: getDate(8, 12),
+      end: getDate(8, 13),
+      title: 'Event 6'
+    },
+    {
+      start: getDate(8, 12),
+      allDay: true,
+      title: 'Event 7'
     }
   ];
   $scope.selected = $scope.events[0];

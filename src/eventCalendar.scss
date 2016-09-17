@@ -259,6 +259,9 @@ md-event-calendar {
 
 
   .md-event-calendar-show-more-container {
+    opacity: 0;
+    // transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+
     position: absolute;
     top: 0;
     left: 1px;
@@ -274,6 +277,14 @@ md-event-calendar {
 
     .md-event-calendar-show-more-content {
       position: relative;
+    }
+
+    &.show {
+      opacity: 1;
+
+      &:not(.no-transition) {
+        transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      }
     }
 
     .md-event-calendar-show-more-close {

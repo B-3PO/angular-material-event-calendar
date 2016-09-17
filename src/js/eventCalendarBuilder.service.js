@@ -64,6 +64,13 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
       content.appendChild(eventElement);
     });
 
+
+    var bounds = opts.cell.getBoundingClientRect();
+    var cellTop = opts.cell.offsetTop;
+    var cellLeft = opts.cell.offsetLeft;
+    container.style.top = cellTop+'px';
+    container.style.left = cellLeft+'px';
+
     return showMoreBody;
   }
 
