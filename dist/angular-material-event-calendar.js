@@ -271,6 +271,13 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
       content.appendChild(eventElement);
     });
 
+
+    var bounds = opts.cell.getBoundingClientRect();
+    var cellTop = opts.cell.offsetTop;
+    var cellLeft = opts.cell.offsetLeft;
+    container.style.top = cellTop+'px';
+    container.style.left = cellLeft+'px';
+
     return showMoreBody;
   }
 
@@ -684,7 +691,7 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
 }
 }());
 (function(){"use strict";
-eventCalendarMonthDirective.$inject = ["$$mdEventCalendarBuilder", "$window", "$$rAF"];angular
+eventCalendarMonthDirective.$inject = ["$$mdEventCalendarBuilder", "$window", "$$rAF", "$timeout"];angular
   .module('material.components.eventCalendar')
   .directive('mdEventCalendarMonth', eventCalendarMonthDirective);
 
@@ -697,7 +704,7 @@ eventCalendarMonthDirective.$inject = ["$$mdEventCalendarBuilder", "$window", "$
  * @restrict E
  **/
  /*@ngInject*/
-function eventCalendarMonthDirective($$mdEventCalendarBuilder, $window, $$rAF) {
+function eventCalendarMonthDirective($$mdEventCalendarBuilder, $window, $$rAF, $timeout) {
   var directive = {
     restrict: 'E',
     require: '^mdEventCalendar',
@@ -707,6 +714,8 @@ function eventCalendarMonthDirective($$mdEventCalendarBuilder, $window, $$rAF) {
 
 
   function link(scope, element, attrs, ctrl) {
+    var showMoreData;
+
     var mdEventCalendarCtrl = ctrl;
     var rebuildThrottle = $$rAF.throttle(function () {
       scope.$evalAsync(function () {
@@ -743,14 +752,12 @@ function eventCalendarMonthDirective($$mdEventCalendarBuilder, $window, $$rAF) {
         scope.$apply(function () {
           mdEventCalendarCtrl.selectEvent(e, getIdFromHash(eventId));
         });
+        return;
       }
 
+      removeShowMore(true);
       if (showMore) {
-        buildShowMore(e.target, new Date(showMore));
-      }
-
-      if (showMoreClose) {
-        angular.element(e.target.parentNode).remove();
+        addShowMore(new Date(showMore));
       }
 
       if (createEvent) {
@@ -787,16 +794,102 @@ function eventCalendarMonthDirective($$mdEventCalendarBuilder, $window, $$rAF) {
       });
       element.empty();
       element.append(monthElement);
+
+      buildShowMore();
     }
 
-    function buildShowMore(el, date) {
-      var showMoreElement = $$mdEventCalendarBuilder.showMore({
-        date: date,
+
+    function addShowMore(date) {
+      showMoreData = {
+        date: date
+      };
+      buildShowMore(true);
+    }
+
+    function buildShowMore(animate) {
+      if (showMoreData === undefined) { return; }
+      if (showMoreData.element) {
+        angular.element(showMoreData.element).remove();
+        showMoreData.element = undefined;
+      }
+
+      var cell = getCellFromDate(showMoreData.date);
+      var showMoreFragment = $$mdEventCalendarBuilder.showMore({
+        date: showMoreData.date,
         selected: mdEventCalendarCtrl.selectedEvents,
         events: mdEventCalendarCtrl.events,
-        labelProperty: mdEventCalendarCtrl.labelProperty
+        labelProperty: mdEventCalendarCtrl.labelProperty,
+        cell: cell
       });
-      angular.element(el).parent().parent().append(showMoreElement);
+
+      element.append(showMoreFragment);
+      showMoreData.element = element[0].lastChild;
+      positonShowMore();
+
+      if (animate) {
+        // add class after element added so animation
+        $timeout(function () {
+          angular.element(showMoreData.element).addClass('show');
+        }, 0);
+      } else {
+        angular.element(showMoreData.element).addClass('no-transition');
+        angular.element(showMoreData.element).addClass('show');
+      }
+    }
+
+    function positonShowMore() {
+      var showMoreBounds = showMoreData.element.getBoundingClientRect();
+      var minTop = $window.innerHeight - showMoreBounds.height;
+      var minLeft = $window.innerWidth - showMoreBounds.width;
+      var leftDiff = showMoreBounds.left - minLeft;
+
+      if (showMoreBounds.top > minTop) {
+        showMoreData.element.style.top = minTop+'px';
+      }
+
+      if (leftDiff > 0) {
+        showMoreData.element.style.left = minLeft+'px';
+        // offset date
+
+        leftDiff -= 10;
+        if (leftDiff > 0) {
+          showMoreData.element.querySelector('.md-event-calendar-show-more-date-label').style.marginLeft = leftDiff+'px';
+        }
+      }
+    }
+
+    function getCellFromDate(date) {
+      return element[0].querySelector('[md-date="'+date+'"]');
+    }
+
+    function removeShowMore(animate) {
+      if (!showMoreData) { return; }
+
+      var el = showMoreData.element;
+      showMoreData = undefined;
+
+      if (animate) {
+        angular.element(el).removeClass('no-transition');
+        $timeout(function () {
+          angular.element(el).removeClass('show');
+        }, 0);
+        $timeout(function () {
+          el.remove();
+          el = undefined;
+        }, 400);
+      } else {
+        el.remove();
+        el = undefined;
+      }
+    }
+
+
+    function getClosestCell(el) {
+      var target = angular.element(el).parent();
+      while (target.hasClass('md-event-calendar-month-cell') === false) {
+        target = target.parent();
+      }
+      return target;
     }
 
     function getIdFromHash(id) {

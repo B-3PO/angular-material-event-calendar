@@ -262,6 +262,7 @@ md-event-calendar .md-event-calendar-show-more-content .md-event-calendar-cell-e
   margin-right: 0; }
 
 md-event-calendar .md-event-calendar-show-more-container {
+  opacity: 0;
   position: absolute;
   top: 0;
   left: 1px;
@@ -274,6 +275,11 @@ md-event-calendar .md-event-calendar-show-more-container {
   box-shadow: 0 7px 8px -4px rgba(0, 0, 0, 0.2), 0 13px 19px 2px rgba(0, 0, 0, 0.14), 0 5px 24px 4px rgba(0, 0, 0, 0.12); }
   md-event-calendar .md-event-calendar-show-more-container .md-event-calendar-show-more-content {
     position: relative; }
+  md-event-calendar .md-event-calendar-show-more-container.show {
+    opacity: 1; }
+    md-event-calendar .md-event-calendar-show-more-container.show:not(.no-transition) {
+      -webkit-transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); }
   md-event-calendar .md-event-calendar-show-more-container .md-event-calendar-show-more-close {
     display: -webkit-box;
     display: -ms-flexbox;
