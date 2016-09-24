@@ -162,6 +162,9 @@ function eventCalendarDirective($injector, $parse) {
     vm.previousMonth = previousMonth;
     vm.selectEvent = selectEvent;
     vm.setToday = setToday;
+    vm.autoHeight = $attrs.autoHeight !== undefined;
+    vm.fitted = $attrs.fitted !== undefined;
+    vm.offset = vm.autoHeight === false || isNaN($attrs.autoHeight.replace('px', '')) ? 0 : parseInt($attrs.autoHeight.replace('px', ''));
 
 
     function nextMonth() {
@@ -320,7 +323,7 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
     var monthElement = createMonthElement();
     var row = createRowElement();
     monthElement.appendChild(row);
-    var cellSize = (options.bounds.width / 7) - 48;
+    var cellSize = options.cellHeight - 48;
     var maxEvents = Math.floor(cellSize / 24);
 
 
@@ -719,6 +722,8 @@ function eventCalendarMonthDirective($$mdEventCalendarBuilder, $window, $$rAF, $
     var mdEventCalendarCtrl = ctrl;
     var rebuildThrottle = $$rAF.throttle(function () {
       scope.$evalAsync(function () {
+        setAutoHeight();
+        element.toggleClass('fitted', mdEventCalendarCtrl.fitted);
         buildView();
       });
     });
@@ -737,6 +742,16 @@ function eventCalendarMonthDirective($$mdEventCalendarBuilder, $window, $$rAF, $
     scope.$on('$destroy', function () {
       angular.element($window).off('resize', rebuildThrottle);
     });
+    setAutoHeight();
+    element.toggleClass('fitted', mdEventCalendarCtrl.fitted);
+
+    function setAutoHeight() {
+      if (!mdEventCalendarCtrl.autoHeight) { return; }
+      mdEventCalendarCtrl.fitted = true;
+      var top = element[0].getBoundingClientRect().top;
+      var height = $window.innerHeight - top - mdEventCalendarCtrl.offset;
+      element.css('height', height+'px');
+    }
 
 
     element.on('click', function (e) {
@@ -782,15 +797,20 @@ function eventCalendarMonthDirective($$mdEventCalendarBuilder, $window, $$rAF, $
 
 
     function buildView() {
+      var cellHeight;
+      if (mdEventCalendarCtrl.fitted) {
+        cellHeight = element[0].offsetHeight / 5;
+      } else {
+        cellHeight = mdEventCalendarCtrl.$element[0].offsetWidth / 7;
+      }
+
       var monthElement = $$mdEventCalendarBuilder.month({
         date: mdEventCalendarCtrl.date,
         events: mdEventCalendarCtrl.events,
         selected: mdEventCalendarCtrl.selectedEvents,
         labelProperty: mdEventCalendarCtrl.labelProperty,
         showCreateLink: mdEventCalendarCtrl.showCreateLink,
-        bounds: {
-          width: mdEventCalendarCtrl.$element[0].offsetWidth
-        }
+        cellHeight: cellHeight
       });
       element.empty();
       element.append(monthElement);
