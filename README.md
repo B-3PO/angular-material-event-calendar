@@ -115,6 +115,7 @@ gulp test
   md-show-create-link="true"
   md-create-event-click="eventCreatea($date)"
   md-create-disabled="true"
+  auto-height=""
   class="md-primary"
 >
   <md-event-calendar-header class="md-center">
@@ -205,6 +206,7 @@ angular.module('myApp', ['ngMaterial', 'material.components.expansionPanels']);
   [md-create-event-click=""]
   [md-show-click-link=""]
   [md-create-disabled=""]
+  [auto-height=""]
 >
 ...
 </md-event-calendar>
@@ -221,6 +223,7 @@ angular.module('myApp', ['ngMaterial', 'material.components.expansionPanels']);
 | md-create-event-click | function | <p>Function to be called when empty area of day is clicked. You can pass in <code>$date</code> to get the days date you clicked on</p>  |
 | md-show-create-link | boolean | <p>Show `Create` in the top right corner when cell is hovered over</p>  |
 | md-create-disabled | boolean | <p>Hides create link and disabled create click event</p>  |
+| auto-height | number | <p>Calendar will fill to the bottom of the window. You can pass it a number(pixels) as an offset</p>  |
 
 
 
