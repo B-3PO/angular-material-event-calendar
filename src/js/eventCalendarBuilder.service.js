@@ -113,7 +113,7 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
     var monthElement = createMonthElement();
     var row = createRowElement();
     monthElement.appendChild(row);
-    var cellSize = (options.bounds.width / 7) - 48;
+    var cellSize = options.cellHeight - 48;
     var maxEvents = Math.floor(cellSize / 24);
 
 
