@@ -1,6 +1,6 @@
 {
   "name": "angular-material-event-calendar",
-  "version": "0.0.8",
+  "version": "0.1.0",
   "description": "Angular material event calander component",
   "main": [
     "dist/angular-material-event-calendar.js",
@@ -8,7 +8,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/B-3PO/angular-material-event-calendar.git"
+    "url": "git@github.com:B-3PO/angular-material-event-calendar.git"
   },
   "authors": [
     "Ben Rubin"
