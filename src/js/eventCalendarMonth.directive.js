@@ -46,8 +46,11 @@ function eventCalendarMonthDirective($$mdEventCalendarBuilder, $window, $$rAF, $
     scope.$on('$destroy', function () {
       angular.element($window).off('resize', rebuildThrottle);
     });
-    setAutoHeight();
-    element.toggleClass('fitted', mdEventCalendarCtrl.fitted);
+
+    $$rAF(function () {
+      setAutoHeight();
+      element.toggleClass('fitted', mdEventCalendarCtrl.fitted);
+    });
 
     function setAutoHeight() {
       if (!mdEventCalendarCtrl.autoHeight) { return; }

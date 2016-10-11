@@ -108,7 +108,7 @@ function eventCalendarDirective($injector, $parse) {
     vm.setToday = setToday;
     vm.autoHeight = $attrs.autoHeight !== undefined;
     vm.fitted = $attrs.fitted !== undefined;
-    vm.offset = vm.autoHeight === false || isNaN($attrs.autoHeight.replace('px', '')) ? 0 : parseInt($attrs.autoHeight.replace('px', ''));
+    vm.offset = vm.autoHeight === false || $attrs.autoHeight === '' || isNaN($attrs.autoHeight.replace('px', '')) ? 0 : parseInt($attrs.autoHeight.replace('px', ''));
 
 
     function nextMonth() {
