@@ -756,6 +756,32 @@ function eventCalendarMonthDirective($$mdEventCalendarBuilder, $window, $$rAF, $
       element.css('height', height+'px');
     }
 
+    hideCreateLinkOnEventItemHover();
+
+    // When user mouses over an existing event, add a class of md-event-hover to
+    // the month element, so that the create link is hidden from view.
+    function hideCreateLinkOnEventItemHover() {
+      element.on('mouseenter', function () {
+        element.on('mousemove', checkForEventItemRAF);
+      });
+
+      element.on('mouseleave', function () {
+        element.off('mousemove', checkForEventItemRAF);
+        element.removeClass('md-event-hover');
+      });
+
+      var lastHoverItem;
+      var checkForEventItemRAF = $$rAF.throttle(checkForEventItem);
+      function checkForEventItem(e) {
+        if (mdEventCalendarCtrl.isCreateDisabled() === true) { return; }
+        if (lastHoverItem === e.target) { return; }
+        lastHoverItem = e.target;
+
+        var targetIsEvent = !!e.target.getAttribute('md-event-id');
+
+        element.toggleClass('md-event-hover', targetIsEvent);
+      }
+    }
 
     element.on('click', function (e) {
       if (mdEventCalendarCtrl.isCreateDisabled() === true) { return; }
