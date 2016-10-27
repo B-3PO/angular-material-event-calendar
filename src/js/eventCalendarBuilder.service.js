@@ -296,16 +296,6 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
     eventElement.classList.add('md-'+type.className);
     eventElement.setAttribute('md-event-id', hash);
 
-    angular.element(eventElement).on('mouseenter', function(thing) {
-      var createLink = this.parentNode.querySelector('.md-event-calendar-create-link');
-      createLink.style.opacity = "0.0";
-    });
-
-    angular.element(eventElement).on('mouseleave', function() {
-      var createLink = this.parentNode.querySelector('.md-event-calendar-create-link');
-      createLink.style.opacity = null;
-    });
-
     if (type.hasLabel === true) {
       // do not show time for allDay events
       if (type.allDay !== true) {

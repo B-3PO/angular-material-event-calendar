@@ -506,16 +506,6 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
     eventElement.classList.add('md-'+type.className);
     eventElement.setAttribute('md-event-id', hash);
 
-    angular.element(eventElement).on('mouseenter', function(thing) {
-      var createLink = this.parentNode.querySelector('.md-event-calendar-create-link');
-      createLink.style.opacity = "0.0";
-    });
-
-    angular.element(eventElement).on('mouseleave', function() {
-      var createLink = this.parentNode.querySelector('.md-event-calendar-create-link');
-      createLink.style.opacity = null;
-    });
-
     if (type.hasLabel === true) {
       // do not show time for allDay events
       if (type.allDay !== true) {
@@ -766,6 +756,32 @@ function eventCalendarMonthDirective($$mdEventCalendarBuilder, $window, $$rAF, $
       element.css('height', height+'px');
     }
 
+    hideCreateLinkOnEventItemHover()
+
+    // When user mouses over an existing event, add a class of md-event-hover to
+    // the month element, so that the create link is hidden from view.
+    function hideCreateLinkOnEventItemHover() {
+      element.on('mouseenter', function () {
+        element.on('mousemove', checkForEventItemRAF);
+      });
+
+      element.on('mouseleave', function () {
+        element.off('mousemove', checkForEventItemRAF);
+        element.removeClass('md-event-hover');
+      });
+
+      var lastHoverItem;
+      var checkForEventItemRAF = $$rAF.throttle(checkForEventItem);
+      function checkForEventItem(e) {
+        if (mdEventCalendarCtrl.isCreateDisabled() === true) { return; }
+        if (lastHoverItem === e.target) { return; }
+        lastHoverItem = e.target;
+
+        var targetIsEvent = !!e.target.getAttribute('md-event-id');
+
+        element.toggleClass('md-event-hover', targetIsEvent);
+      }
+    }
 
     element.on('click', function (e) {
       if (mdEventCalendarCtrl.isCreateDisabled() === true) { return; }
