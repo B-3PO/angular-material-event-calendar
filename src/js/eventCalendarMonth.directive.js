@@ -60,7 +60,7 @@ function eventCalendarMonthDirective($$mdEventCalendarBuilder, $window, $$rAF, $
       element.css('height', height+'px');
     }
 
-    hideCreateLinkOnEventItemHover()
+    hideCreateLinkOnEventItemHover();
 
     // When user mouses over an existing event, add a class of md-event-hover to
     // the month element, so that the create link is hidden from view.
