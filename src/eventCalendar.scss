@@ -41,7 +41,29 @@ md-event-calendar {
 
 
 md-event-calendar {
+  // hide create link until hover over the day view.  Hide it again if hovering
+  // over an existing event.  This specific structure is necessary in order to
+  // preserve the correct precedence.
+
+  .md-event-calendar-month-cell-content {
+    .md-event-calendar-create-link {
+      opacity: 0;
+    }
+  }
+
+  .md-event-calendar-month-cell-content:hover {
+    .md-event-calendar-create-link {
+      opacity: 1;
+    }
+  }
+
   md-event-calendar-month {
+    &.md-event-hover {
+      .md-event-calendar-month-cell-content .md-event-calendar-create-link {
+        opacity: 0;
+      }
+    }
+
     &.fitted {
       display: flex;
       flex-direction: column;
@@ -105,14 +127,7 @@ md-event-calendar {
             font-weight: 500;
             padding-right: 12px;
             cursor: pointer;
-            opacity: 0;
             transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-          }
-
-          &:hover {
-            .md-event-calendar-create-link {
-              opacity: 1;
-            }
           }
 
           .md-event-calendar-cell-data-label {
