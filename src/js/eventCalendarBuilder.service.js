@@ -294,6 +294,7 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
     var eventElement = document.createElement('div');
     eventElement.classList.add('md-event-calendar-cell-event');
     eventElement.classList.add('md-'+type.className);
+    if (eventItem.customClass) {eventElement.classList.add(eventItem.customClass)};
     eventElement.setAttribute('md-event-id', hash);
 
     if (type.hasLabel === true) {
