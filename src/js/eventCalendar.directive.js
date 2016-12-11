@@ -29,6 +29,7 @@ function eventCalendarDirective($injector, $parse) {
   function compile(tElement, tAttr) {
     var eventClickFunc = tAttr.mdEventClick ? $parse(tAttr.mdEventClick, null, true) : undefined;
     var createEventClickFunc = tAttr.mdCreateEventClick ? $parse(tAttr.mdCreateEventClick, null, true) : undefined;
+    var changeMonthFunc = tAttr.mdChangeMonth ? $parse(tAttr.mdChangeMonth, null, true) : undefined;
     var mdCreateDisabled = tAttr.mdCreateDisabled ? $parse(tAttr.mdCreateDisabled) : undefined;
     tElement.append('<md-event-calendar-month></md-event-calendar-month>');
 
@@ -44,6 +45,7 @@ function eventCalendarDirective($injector, $parse) {
       mdEventCalendarCtrl.isCreateDisabled = isCreateDisabled;
       mdEventCalendarCtrl.callEventClick = callEventClick;
       mdEventCalendarCtrl.createEventClick = createEventClick;
+      mdEventCalendarCtrl.changeMonth = changeMonth;
 
       if (ngModelCtrl) {
         ngModelCtrl.$render = render;
@@ -57,14 +59,19 @@ function eventCalendarDirective($injector, $parse) {
       }
 
 
-      function callEventClick(e, eventItem) {
+      function callEventClick(e, eventItem, date) {
         if (!attrs.mdEventClick) { return; }
-        eventClickFunc(scope.$parent, {$event: e, $selectedEvent: eventItem});
+        eventClickFunc(scope.$parent, {$event: e, $selectedEvent: eventItem, $date: date});
       }
 
       function createEventClick(e, date) {
         if (!attrs.mdCreateEventClick) { return; }
         createEventClickFunc(scope.$parent, {$event: e, $date: date});
+      }
+
+      function changeMonth(date) {
+        if (!attrs.mdChangeMonth) { return; }
+        changeMonthFunc(scope.$parent, {$date: date});
       }
 
       function isCreateDisabled() {
@@ -116,6 +123,7 @@ function eventCalendarDirective($injector, $parse) {
       vm.monthDisplay = $$mdEventCalendarUtil.months[vm.date.getMonth()];
       vm.yearDisplay = vm.date.getFullYear();
       vm.isTodayDisabled = vm.date.getMonth() === (new Date()).getMonth();
+      vm.changeMonth(vm.date);
     }
 
 
@@ -124,6 +132,7 @@ function eventCalendarDirective($injector, $parse) {
       vm.monthDisplay = $$mdEventCalendarUtil.months[vm.date.getMonth()];
       vm.yearDisplay = vm.date.getFullYear();
       vm.isTodayDisabled = vm.date.getMonth() === (new Date()).getMonth();
+      vm.changeMonth(vm.date);
     }
 
     function setToday() {
@@ -134,7 +143,7 @@ function eventCalendarDirective($injector, $parse) {
     }
 
 
-    function selectEvent(e, id) {
+    function selectEvent(e, id, date) {
       // TODO create hashkeys for all events and store in reference object
       var value = vm.events.filter(function (item) {
         return item.$$mdEventId === id;
@@ -144,7 +153,7 @@ function eventCalendarDirective($injector, $parse) {
         vm.ngModelCtrl.$setViewValue(value[0]);
         vm.ngModelCtrl.$render();
       }
-      vm.callEventClick(e, value[0]);
+      vm.callEventClick(e, value[0], date);
 
       return true;
     }
