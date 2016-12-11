@@ -242,6 +242,7 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
     var showMoreBody = document.createDocumentFragment();
     var container = document.createElement('div');
     container.classList.add('md-event-calendar-show-more-container');
+    container.setAttribute('md-date', date.toISOString());
     var content = document.createElement('div');
     content.classList.add('md-event-calendar-show-more-content');
     var dateLabel = document.createElement('div');
