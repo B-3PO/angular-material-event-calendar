@@ -94,19 +94,18 @@ function eventCalendarMonthDirective($$mdEventCalendarBuilder, $window, $$rAF, $
       var showMore = e.target.getAttribute('md-show-more');
       var showMoreClose = e.target.getAttribute('md-show-more-close');
       var createEvent = e.target.getAttribute('md-create-event') !== null;
-      var eventDate = new Date(showMore);
 
       if (eventId) {
         var eventItem = getIdFromHash(eventId);
         scope.$apply(function () {
-          mdEventCalendarCtrl.selectEvent(e, getIdFromHash(eventId), eventDate);
+          mdEventCalendarCtrl.selectEvent(e, getIdFromHash(eventId), getDateFromCreate(e.target));
         });
         return;
       }
 
       removeShowMore(true);
       if (showMore) {
-        addShowMore(eventDate);
+        addShowMore(new Date(showMore));
       }
 
       if (createEvent) {
