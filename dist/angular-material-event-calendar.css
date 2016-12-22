@@ -280,7 +280,7 @@ md-event-calendar .md-event-calendar-show-more-container {
   position: absolute;
   top: 0;
   left: 1px;
-  width: 180px;
+  width: auto;
   background: #FFF;
   padding: 12px;
   padding-top: 7px;
