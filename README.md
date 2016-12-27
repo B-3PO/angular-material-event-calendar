@@ -110,8 +110,9 @@ gulp test
 <md-event-calendar
   ng-model="selected"
   md-events="events"
-  md-event-click="eventClicked($selectedEvent)"
-  md-label="title",
+  md-event-click="eventClicked($selectedEvent, $date)"
+  md-change-month="changeMonth($date)"
+  md-label="title"
   md-show-create-link="true"
   md-create-event-click="eventCreatea($date)"
   md-create-disabled="true"
@@ -150,11 +151,6 @@ Primary Color scss: [Click Here](https://github.com/B-3PO/angular-material-event
 
 ## <a name="documentation"></a> Documentation
 
-To add Expansion Panels to you angular-material project, include the `material.components.expansionPanels` module as a dependency in your application.
-
-```javascript
-angular.module('myApp', ['ngMaterial', 'material.components.expansionPanels']);
-```
 
 
 * [Event Object](#eventobject)
@@ -204,6 +200,7 @@ angular.module('myApp', ['ngMaterial', 'material.components.expansionPanels']);
   [md-label=""]
   [md-event-click=""]
   [md-create-event-click=""]
+  [md-change-month=""]
   [md-show-click-link=""]
   [md-create-disabled=""]
   [auto-height=""]
@@ -219,8 +216,9 @@ angular.module('myApp', ['ngMaterial', 'material.components.expansionPanels']);
 | ng-model | model= | <p>Optional model to hold selected event object</p>  |
 | md-events | array | <p>Array of events</p>  |
 | md-label | string=title | <p>Property name for title display</p>  |
-| md-event-click | function | <p>Function to be called on event click. You can pass in <code>$selectedEvent</code> to get the event object you clicked on</p>  |
+| md-event-click | function | <p>Function to be called on event click. You can pass in <code>$selectedEvent</code> to get the event object you clicked on and <code>$date</code> to get the date the event is on</p>  |
 | md-create-event-click | function | <p>Function to be called when empty area of day is clicked. You can pass in <code>$date</code> to get the days date you clicked on</p>  |
+| md-change-month | function | <p>Function to be called when the month is changed. You can pass in <code>$date</code> to get the date of the first day of the new month</p>  |
 | md-show-create-link | boolean | <p>Show `Create` in the top right corner when cell is hovered over</p>  |
 | md-create-disabled | boolean | <p>Hides create link and disabled create click event</p>  |
 | auto-height | number | <p>Calendar will fill to the bottom of the window. You can pass it a number(pixels) as an offset</p>  |

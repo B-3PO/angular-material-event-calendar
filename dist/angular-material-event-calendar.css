@@ -175,6 +175,7 @@ md-event-calendar md-event-calendar-month .md-event-calendar-month-row {
       right: 0; }
       md-event-calendar md-event-calendar-month .md-event-calendar-month-row .md-event-calendar-month-cell .md-event-calendar-month-cell-content .md-event-calendar-create-link {
         -ms-flex-item-align: center;
+            -ms-grid-row-align: center;
             align-self: center;
         text-transform: uppercase;
         font-size: 14px;
@@ -279,7 +280,7 @@ md-event-calendar .md-event-calendar-show-more-container {
   position: absolute;
   top: 0;
   left: 1px;
-  width: 180px;
+  width: auto;
   background: #FFF;
   padding: 12px;
   padding-top: 7px;

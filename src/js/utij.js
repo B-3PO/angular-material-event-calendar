@@ -43,7 +43,7 @@ function utilService($injector, $locale, $filter) {
 
 
   function formatEventTime(date) {
-    return dateFilter(date, 'h:mm a');
+    return dateFilter(date, 'HH:mm');
   }
 
 

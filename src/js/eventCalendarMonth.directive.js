@@ -98,7 +98,7 @@ function eventCalendarMonthDirective($$mdEventCalendarBuilder, $window, $$rAF, $
       if (eventId) {
         var eventItem = getIdFromHash(eventId);
         scope.$apply(function () {
-          mdEventCalendarCtrl.selectEvent(e, getIdFromHash(eventId));
+          mdEventCalendarCtrl.selectEvent(e, getIdFromHash(eventId), getDateFromCreate(e.target));
         });
         return;
       }
