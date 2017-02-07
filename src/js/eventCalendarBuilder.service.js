@@ -165,7 +165,6 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
         lastCalendarDay = true;
       }
       iterationDate.setDate((d - lastCalendarDayNum) + 1);
-      console.log(dayOfWeek, iterationDate)
       row.appendChild(createCellElement(getCellOptions(iterationDate, dayOfWeek, true)));
       dayOfWeek += 1;
       d += 1;
