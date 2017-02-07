@@ -98,6 +98,7 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
 
   function month(options) {
     var calendarStartDate;
+    var lastCalendarDayNum;
     var d = 0;
     var rowNumber = 1;
     var firstCalendarDay = true;
@@ -157,13 +158,14 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
     }
 
 
-
+    lastCalendarDayNum = d;
     // fill in the rest of the row with next month
     while (row.childNodes.length < 7) {
       if (dayOfWeek === 6) {
         lastCalendarDay = true;
       }
-      iterationDate.setDate(d);
+      iterationDate.setDate((d - lastCalendarDayNum) + 1);
+      console.log(dayOfWeek, iterationDate)
       row.appendChild(createCellElement(getCellOptions(iterationDate, dayOfWeek, true)));
       dayOfWeek += 1;
       d += 1;
