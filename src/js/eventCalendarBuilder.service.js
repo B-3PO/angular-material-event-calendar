@@ -293,9 +293,10 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
   function createEventElement(type, eventItem, options) {
     var hash = getHashValue(eventItem);
     var eventElement = document.createElement('div');
+    eventElement.setAttribute('md-event-id', hash);
     eventElement.classList.add('md-event-calendar-cell-event');
     eventElement.classList.add('md-'+type.className);
-    eventElement.setAttribute('md-event-id', hash);
+    if (eventItem.customClass) { eventElement.classList.add(eventItem.customClass) };
 
     if (type.hasLabel === true) {
       // do not show time for allDay events
