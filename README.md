@@ -150,10 +150,10 @@ Primary Color scss: [Click Here](https://github.com/B-3PO/angular-material-event
 
 ## <a name="documentation"></a> Documentation
 
-To add Expansion Panels to you angular-material project, include the `material.components.expansionPanels` module as a dependency in your application.
+To add eventCalendar to you angular-material project, include the `material.components.eventCalendar` module as a dependency in your application.
 
 ```javascript
-angular.module('myApp', ['ngMaterial', 'material.components.expansionPanels']);
+angular.module('myApp', ['ngMaterial', 'material.components.eventCalendar']);
 ```
 
 
