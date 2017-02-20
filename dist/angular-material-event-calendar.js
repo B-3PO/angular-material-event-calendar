@@ -308,6 +308,7 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
 
   function month(options) {
     var calendarStartDate;
+    var lastCalendarDayNum;
     var d = 0;
     var rowNumber = 1;
     var firstCalendarDay = true;
@@ -367,13 +368,13 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
     }
 
 
-
+    lastCalendarDayNum = d;
     // fill in the rest of the row with next month
     while (row.childNodes.length < 7) {
       if (dayOfWeek === 6) {
         lastCalendarDay = true;
       }
-      iterationDate.setDate(d);
+      iterationDate.setDate((d - lastCalendarDayNum) + 1);
       row.appendChild(createCellElement(getCellOptions(iterationDate, dayOfWeek, true)));
       dayOfWeek += 1;
       d += 1;
@@ -502,9 +503,10 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
   function createEventElement(type, eventItem, options) {
     var hash = getHashValue(eventItem);
     var eventElement = document.createElement('div');
+    eventElement.setAttribute('md-event-id', hash);
     eventElement.classList.add('md-event-calendar-cell-event');
     eventElement.classList.add('md-'+type.className);
-    eventElement.setAttribute('md-event-id', hash);
+    if (eventItem.customClass) { eventElement.classList.add(eventItem.customClass); }
 
     if (type.hasLabel === true) {
       // do not show time for allDay events
