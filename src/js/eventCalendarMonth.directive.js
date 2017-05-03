@@ -139,6 +139,7 @@ function eventCalendarMonthDirective($$mdEventCalendarBuilder, $window, $$rAF, $
         selected: mdEventCalendarCtrl.selectedEvents,
         labelProperty: mdEventCalendarCtrl.labelProperty,
         showCreateLink: mdEventCalendarCtrl.showCreateLink,
+        createLabel: mdEventCalendarCtrl.createLabel,
         cellHeight: cellHeight
       });
       element.empty();
