@@ -115,7 +115,7 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
     var row = createRowElement();
     monthElement.appendChild(row);
     var cellSize = options.cellHeight - 48;
-    var maxEvents = Math.floor(cellSize / 24);
+    var maxEvents = Math.floor(cellSize / 33);
 
 
     // days from last month
@@ -158,13 +158,15 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
     }
 
 
-    lastCalendarDayNum = d;
     // fill in the rest of the row with next month
+    lastCalendarDayNum = d - 1;
+    iterationDate.setDate(lastCalendarDayNum);
+
     while (row.childNodes.length < 7) {
       if (dayOfWeek === 6) {
         lastCalendarDay = true;
       }
-      iterationDate.setDate((d - lastCalendarDayNum) + 1);
+      iterationDate.setDate(iterationDate.getDate() + 1);
       row.appendChild(createCellElement(getCellOptions(iterationDate, dayOfWeek, true)));
       dayOfWeek += 1;
       d += 1;
@@ -186,7 +188,8 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
         maxEvents: maxEvents, // max events that can be displayed in a day cell. based on cell size
         selected: selected, // array of selected events. from ngModel
         labelProperty: options.labelProperty, // name of the label property. default: title
-        showCreateLink: options.showCreateLink // show create link on hover of day cell
+        showCreateLink: options.showCreateLink, // show create link on hover of day cell
+        createLabel: options.createLabel
       };
     }
   }
@@ -209,12 +212,10 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
     cell.appendChild(divider);
 
     var cellContent = document.createElement('div');
-    cellContent.setAttribute('md-create-event', '');
     cellContent.classList.add('md-event-calendar-month-cell-content');
     cell.appendChild(cellContent);
 
     var cellHeader = document.createElement('div');
-    cellHeader.setAttribute('md-create-event', '');
     cellHeader.classList.add('layout-row');
     cellContent.appendChild(cellHeader);
 
@@ -228,7 +229,7 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
       var createLink = document.createElement('div');
       createLink.setAttribute('md-create-event', '');
       createLink.classList.add('md-event-calendar-create-link');
-      createLink.textContent = 'Create';
+      createLink.textContent = options.createLabel || 'Create';
       cellHeader.appendChild(createLink);
     }
 

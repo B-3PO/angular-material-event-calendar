@@ -12,6 +12,56 @@ function HomeController($scope, $timeout) {
       title: 'Event 1'
     },
     {
+      start: getDate(-6, 10),
+      end: getDate(-6, 11),
+      title: 'Event 11'
+    },
+    {
+      start: getDate(-6, 10),
+      end: getDate(-6, 11),
+      title: 'Event 12'
+    },
+    {
+      start: getDate(-6, 10),
+      end: getDate(-6, 11),
+      title: 'Event 13'
+    },
+    {
+      start: getDate(-6, 10),
+      end: getDate(-6, 11),
+      title: 'Event 14'
+    },
+    {
+      start: getDate(-6, 10),
+      end: getDate(-6, 11),
+      title: 'Event 15'
+    },
+    {
+      start: getDate(-6, 10),
+      end: getDate(-6, 11),
+      title: 'Event 16'
+    },
+    {
+      start: getDate(-6, 10),
+      end: getDate(-6, 11),
+      title: 'Event 17'
+    },
+    {
+      start: getDate(-6, 10),
+      end: getDate(-6, 11),
+      title: 'Event 18'
+    },
+    {
+      start: getDate(-6, 10),
+      end: getDate(-6, 11),
+      title: 'Event 19'
+    },
+    {
+      start: getDate(-6, 10),
+      end: getDate(-6, 11),
+      title: 'Event 20'
+    },
+    {
       start: getDate(0, 10),
       end: getDate(1, 11),
       title: 'Event 1'

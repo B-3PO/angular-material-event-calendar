@@ -88,8 +88,6 @@ function eventCalendarMonthDirective($$mdEventCalendarBuilder, $window, $$rAF, $
     }
 
     element.on('click', function (e) {
-      if (mdEventCalendarCtrl.isCreateDisabled() === true) { return; }
-
       var eventId = e.target.getAttribute('md-event-id');
       var showMore = e.target.getAttribute('md-show-more');
       var showMoreClose = e.target.getAttribute('md-show-more-close');
@@ -101,20 +99,18 @@ function eventCalendarMonthDirective($$mdEventCalendarBuilder, $window, $$rAF, $
           mdEventCalendarCtrl.selectEvent(e, getIdFromHash(eventId));
         });
         return;
-      }
-
-      removeShowMore(true);
-      if (showMore) {
-        addShowMore(new Date(showMore));
-      }
-
-      if (createEvent) {
+      } else if (createEvent) {
         var cellDate = getDateFromCreate(e.target);
         if (cellDate !== undefined) {
           scope.$apply(function () {
             mdEventCalendarCtrl.createEventClick(e, cellDate);
           });
         }
+      }
+
+      removeShowMore(true);
+      if (showMore) {
+        addShowMore(new Date(showMore));
       }
     });
 
@@ -143,6 +139,7 @@ function eventCalendarMonthDirective($$mdEventCalendarBuilder, $window, $$rAF, $
         selected: mdEventCalendarCtrl.selectedEvents,
         labelProperty: mdEventCalendarCtrl.labelProperty,
         showCreateLink: mdEventCalendarCtrl.showCreateLink,
+        createLabel: mdEventCalendarCtrl.createLabel,
         cellHeight: cellHeight
       });
       element.empty();
