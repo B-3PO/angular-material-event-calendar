@@ -175,13 +175,13 @@ md-event-calendar md-event-calendar-month .md-event-calendar-month-row {
       right: 0; }
       md-event-calendar md-event-calendar-month .md-event-calendar-month-row .md-event-calendar-month-cell .md-event-calendar-month-cell-content .md-event-calendar-create-link {
         -ms-flex-item-align: center;
+            -ms-grid-row-align: center;
             align-self: center;
         text-transform: uppercase;
         font-size: 14px;
         font-weight: 500;
         padding-right: 12px;
         cursor: pointer;
-        -webkit-transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
         transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); }
       md-event-calendar md-event-calendar-month .md-event-calendar-month-row .md-event-calendar-month-cell .md-event-calendar-month-cell-content .md-event-calendar-cell-data-label {
         font-size: 13px;
@@ -291,7 +291,6 @@ md-event-calendar .md-event-calendar-show-more-container {
   md-event-calendar .md-event-calendar-show-more-container.show {
     opacity: 1; }
     md-event-calendar .md-event-calendar-show-more-container.show:not(.no-transition) {
-      -webkit-transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
       transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); }
   md-event-calendar .md-event-calendar-show-more-container .md-event-calendar-show-more-close {
     display: -webkit-box;

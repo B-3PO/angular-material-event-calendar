@@ -46,10 +46,11 @@ function HomeController($scope, $timeout) {
       allDay: true,
       title: 'Event 7'
     },
-
-
-
-
+    {
+      start: getDate(-3, 12),
+      allDay: getDate(-3, 13),
+      title: 'Event 7.1'
+    },
     {
       start: getDate(8, 12),
       end: getDate(8, 13),
