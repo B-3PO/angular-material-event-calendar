@@ -164,7 +164,7 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
       if (dayOfWeek === 6) {
         lastCalendarDay = true;
       }
-      iterationDate.setDate((d - lastCalendarDayNum) + 1);
+      iterationDate.setDate(iterationDate.getDate() + 1);
       row.appendChild(createCellElement(getCellOptions(iterationDate, dayOfWeek, true)));
       dayOfWeek += 1;
       d += 1;
