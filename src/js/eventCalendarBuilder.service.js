@@ -158,13 +158,15 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
     }
 
 
-    lastCalendarDayNum = d;
     // fill in the rest of the row with next month
+    lastCalendarDayNum = d - 1;
+    iterationDate.setDate(lastCalendarDayNum);
+
     while (row.childNodes.length < 7) {
       if (dayOfWeek === 6) {
         lastCalendarDay = true;
       }
-      iterationDate.setDate((d - lastCalendarDayNum) + 1);
+      iterationDate.setDate(iterationDate.getDate() + 1);
       row.appendChild(createCellElement(getCellOptions(iterationDate, dayOfWeek, true)));
       dayOfWeek += 1;
       d += 1;
@@ -209,12 +211,10 @@ function mdEventCalendarBuilderService($$mdEventCalendarUtil, $templateCache) {
     cell.appendChild(divider);
 
     var cellContent = document.createElement('div');
-    cellContent.setAttribute('md-create-event', '');
     cellContent.classList.add('md-event-calendar-month-cell-content');
     cell.appendChild(cellContent);
 
     var cellHeader = document.createElement('div');
-    cellHeader.setAttribute('md-create-event', '');
     cellHeader.classList.add('layout-row');
     cellContent.appendChild(cellHeader);
 
