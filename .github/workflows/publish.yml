@@ -1,0 +1,35 @@
+name: Node.js Package
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  test:
+    runs-on: org-runner
+    strategy:
+      matrix:
+        node-version: [12.11.1]
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm ci
+      - run: npm test
+  publish-gpr:
+    needs: test
+    runs-on: org-runner
+    strategy:
+      matrix:
+        node-version: [12.11.1]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Set job env
+        run: |
+          setJobEnv
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm ci
+      - run: npm publish
