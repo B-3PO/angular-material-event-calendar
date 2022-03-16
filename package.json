@@ -1,5 +1,5 @@
 {
-  "name": "angular-material-event-calendar",
+  "name": "@bypasslane/angular-material-event-calendar",
   "version": "0.1.4",
   "author": "Ben Rubin",
   "description": "Angular material event calander component",
@@ -7,7 +7,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git@github.com/B-3PO/angular-material-event-calendar.git"
+    "url": "https://github.com/bypasslane/angular-material-event-calendar.git"
   },
   "main": "index.js",
   "devDependencies": {
@@ -47,5 +47,8 @@
   "scripts": {
     "local": "gulp",
     "build": "gulp build"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   }
 }
